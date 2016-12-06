@@ -75,6 +75,13 @@ session_start();
 		  <div id="arm_s" class="arm_s azul ac_w d_b" onclick="p_v(this)"> <a >SOLICITAR UN VIAJE</a></div>
 		</div>
       </div>
+      <div  id="viaje_publico" class="muestras">
+
+
+		</div>
+    <div  id="viaje_solicitado" class="muestras">
+            
+    </div>
 	  </center>
       <script type="text/javascript">
 	    function p_v(obe){
