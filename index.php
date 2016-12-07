@@ -1,11 +1,12 @@
 <?php
 
 require_once 'app/start.php';
-if ($_SESSION['email']) {
-  header('location:inicio.php');
-}else{
 
-}
+  if (ISSET($_SESSION["email"])) {
+    header('location:inicio.php');
+      }
+    else {
+        }
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +62,7 @@ if ($_SESSION['email']) {
 	    <form id="l"  name="l" action="php/login.php" method="post">
 		<label>Inicio de sesión</label>
 		 <input type="text" placeholder="Usuario" name="us" id="us"></input>
-		 <input type="text" placeholder="Contraseña" id="p" name="p"></input>
+		 <input type="password" placeholder="Contraseña" id="p" name="p"></input>
 		 <a href="#" class="fs" onclick="login()"><div  class="icon-user " id="loguearme"><span>Entrar<span></div></a>
 		<!-- -->
 
@@ -77,8 +78,8 @@ if ($_SESSION['email']) {
 		<label>Registrarme</label>
           <input type="text" name="nombre" id="nombre" value="" placeholder="Nombre y Apellidos">
           <input type="text" name="email" id="email" value="" placeholder="E-mail">
-          <input type="text" name="contrasena" id="contrasena" value="" placeholder="Clave">
-          <input type="text" name="ccon"  id="ccon" value="" placeholder="Confirmar Clave">
+          <input type="password" name="contrasena" id="contrasena" value="" placeholder="Clave">
+          <input type="password" name="ccon"  id="ccon" value="" placeholder="Confirmar Clave">
           <input type="text" name="telefono" id="telefono" value="" placeholder="Telefono">
           <a href="#"><div id="registrarme" onclick="registro()"><span>Registrarme</span></div>	</a>
 		  <div class="facebook_loging">Con facebook</div>

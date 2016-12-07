@@ -260,21 +260,3 @@ ul li:hover{
  width: 100%;
  background:  gray;
 }
-
-#triangulo{
-     width: 0;
-     height: 0;
-     border-left: 20px solid #000;
-     border-top: 10px solid transparent;
-     border-bottom: 10px solid transparent;
-}
-#ui-datepicker-div{
-  position: relative;
-  height: 250px;
-  width: 250px;
-}
-#ui-datepicker-div a,tr,td,th,thead,tbody{
-  height: 20px;
-  position: relative;
-  width: 20px;
-}

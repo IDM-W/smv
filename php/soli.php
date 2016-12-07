@@ -38,7 +38,15 @@ $r=$clase->svi($p);
         }else{
           $e=$query->rowCount();
            if ($e==1) {
-             echo $res[0];
+              echo '<table>
+
+                <tr height="20">
+                  <td>'.$_SESSION['nombre'].'</td>
+                  <td>'.$res[0].'</td>
+                  <td>'.$res[1].'</td>
+                  <td>'.$res[2].'</td>
+                </tr>
+              </table>' ;
            }else {
              echo 0;
            }

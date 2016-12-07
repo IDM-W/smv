@@ -9,7 +9,9 @@ function publicar() {
             date:$("#date").val(),
             hora:$("#hora").val(),
             cupo:$("#cupo").val(),
-            precio:$("#precio").val()
+            precio:$("#precio").val(),
+            marca:$("#marca").val(),
+            modelo:$("#modelo").val()
            },
            beforeSend: function(){
 
@@ -18,13 +20,18 @@ function publicar() {
              if (datos==0) {
                alert("no se puedo insertar")
              }else {
-               alert("Viaje Armado Satisfactoriamente");
+               
+               $("#viaje_solicitado").css("display","none");
+               $("#viaje_publico").css("display","block");
+               document.getElementById('viaje_publico').innerHTML=document.getElementById('viaje_publico').innerHTML+datos;
                $("#ls").val("");
                $("#ll").val("");
                $("#date").val("");
                $("#hora").val("");
                $("#cupo").val("");
                $("#precio").val("");
+               $("#marca").val("");
+               $("#modelo").val("");
              }
 
            },
@@ -72,13 +79,15 @@ function solicitar() {
 },
            success:function(datos){
              if (datos==0) {
-               alert("no se puedo insertar")
+               alert(datos)
              }else {
-               alert("solitud echa Satisfactoriamente");
+
                $("#lls").val("");
                $("#lll").val("");
                $("#ddate").val("");
-
+               $("#viaje_solicitado").css("display","block");
+               $("#viaje_publico").css("display","none");
+           document.getElementById('viaje_solicitado').innerHTML= document.getElementById('viaje_solicitado').innerHTML+datos;
              }
 
            },

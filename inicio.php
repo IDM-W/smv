@@ -1,6 +1,12 @@
 <?php
 
 session_start();
+if (ISSET($_SESSION["email"])) {
+
+    }
+  else {
+      header('location:index.php');
+      }
  ?>
 
 <!DOCTYPE html>
@@ -44,7 +50,7 @@ session_start();
       <div class="inp" id="menu_user">
 	   <center>
 	    <form>
-		<label>
+		    <center><input  type="button" id="logout" onclick="window.location.href='app/logout.php';" value="Cerrar Sesion"></center>
 		</form>
 	   </center>
 	  </div>
@@ -54,12 +60,14 @@ session_start();
 	    <div  id="viaje_arm">
 
 		 <form action="" data="">
-           <input type="text" id="ls"  placeholder="lugar de salida"><br>
-           <input type="text" id="ll"  placeholder="lugar de llegada"><br>
-           <input type="date" id="date" name="name" value="" placeholder="Fecha" onFocus="calendario(this)"><br>
-           <input type="time" name="hora" id="hora" placeholder="Hora de salida"><br>
-           <input type="number" id="cupo" placeholder="CNatidad de psajeros"><br>
-           <input type="text" id="precio" name="name" value="" placeholder="Precio"><br><br>
+           <input type="text" id="ls"  placeholder="lugar de salida">
+           <input type="text" id="ll"  placeholder="lugar de llegada">
+           <input type="date" id="date" name="name" value="" placeholder="Fecha" onFocus="calendario(this)">
+           <input type="time" name="hora" id="hora" placeholder="Hora de salida">
+           <input type="number" id="cupo" placeholder="Cantidad de psajeros">
+           <input type="text" id="precio" name="name" value="" placeholder="Precio">
+            <input type="text" id="marca" name="name" value="" placeholder="Marca">
+             <input type="text" id="modelo" name="name" value="" placeholder="Modelo">
            <button type="button" onclick="publicar()">Publicar Viaje</button>
 		 </form>
 		</div>
@@ -76,11 +84,14 @@ session_start();
 		</div>
       </div>
       <div  id="viaje_publico" class="muestras">
-
-
+        <center><div id="mapa">
+        </div></center>
+        
 		</div>
     <div  id="viaje_solicitado" class="muestras">
-            
+           <center><div id="mapa">
+           </div></center>
+
     </div>
 	  </center>
       <script type="text/javascript">
