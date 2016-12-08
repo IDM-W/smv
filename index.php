@@ -1,7 +1,7 @@
 <?php
 
-require_once 'app/start.php';
 
+session_start();
   if (ISSET($_SESSION["email"])) {
     header('location:inicio.php');
       }
@@ -14,8 +14,8 @@ require_once 'app/start.php';
    <head>
     <meta charset="utf-8"></meta>
 	<title>Se armo el viaje</title>
-	<script src="http://maps.google.com/maps?file=api&amp;v=2&oe=ISO-8859-1;&amp;key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78"
-type="text/javascript"></script>
+	<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&oe=ISO-8859-1;&amp;key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78"
+type="text/javascript"></script>-->
 	<link rel="stylesheet" type="text/css" href="font_icon/style.css" >
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src=js/js.js></script>
@@ -100,7 +100,7 @@ type="text/javascript"></script>
 	       	<br>
 		       <a>Viajes populares</a><br>
                <div class="hnm" id="v_populares">
-               	
+
                </div>
 
 	       </div>

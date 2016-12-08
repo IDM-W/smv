@@ -52,7 +52,7 @@ type="text/javascript"></script>
       <div class="inp" id="menu_user">
 	   <center>
 	    <form>
-		    <center><input  type="button" id="logout" onclick="window.location.href='app/logout.php';" value="Cerrar Sesion"></center>
+		    <center><input  type="button" id="logout" onclick="window.location.href='php/logout.php';" value="Cerrar Sesion"></center>
 		</form>
 	   </center>
 	  </div>
@@ -100,7 +100,7 @@ type="text/javascript"></script>
         <br>
         <div id="response"></div>
         </center>
-        
+
 		</div>
    <!-- <div id="viaje_solicitado" class="muestras">
            <center><div id="mapa">
