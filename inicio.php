@@ -14,13 +14,15 @@ if (ISSET($_SESSION["email"])) {
    <head>
     <meta charset="utf-8"></meta>
 	<title>Se armo el viaje</title>
-
+<script src="http://maps.google.com/maps?file=api&amp;v=2&oe=ISO-8859-1;&amp;key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78"
+type="text/javascript"></script>
 	<link rel="stylesheet" type="text/css" href="font_icon/style.css" >
 	<link rel="stylesheet" type="text/css" href="user.css"></link>
 	<link rel="stylesheet" type="text/css" href="style.css">
   <script type="text/javascript" src=js/js.js></script>
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js">    </script>
   <script type="text/javascript" src="js/ajax.js"></script>
+  <script type="text/javascript" src="js/maps/map.js"></script>
 
 
 
@@ -31,8 +33,8 @@ if (ISSET($_SESSION["email"])) {
 } );
   </script>
    </head>
-   <body >
-		<input id="user_menu" type="checkbox"></input>
+   <body onload="initialize()" >
+	   <input id="user_menu" type="checkbox"></input>
        <header role="navegation">
         <nav class="menu">
             <ul>
@@ -59,16 +61,23 @@ if (ISSET($_SESSION["email"])) {
 	 <div id="pub_soli">
 	    <div  id="viaje_arm">
 
-		 <form action="" data="">
-           <input type="text" id="ls"  placeholder="lugar de salida">
-           <input type="text" id="ll"  placeholder="lugar de llegada">
+		 <form  action="" data="">
+           <input name="salida" type="text" id="ls"  placeholder="lugar de salida">
+           <input name="llegada" type="text" id="ll"  placeholder="lugar de llegada">
            <input type="date" id="date" name="name" value="" placeholder="Fecha" onFocus="calendario(this)">
            <input type="time" name="hora" id="hora" placeholder="Hora de salida">
            <input type="number" id="cupo" placeholder="Cantidad de psajeros">
            <input type="text" id="precio" name="name" value="" placeholder="Precio">
-            <input type="text" id="marca" name="name" value="" placeholder="Marca">
-             <input type="text" id="modelo" name="name" value="" placeholder="Modelo">
-           <button type="button" onclick="publicar()">Publicar Viaje</button>
+           <input type="text" id="marca" name="name" value="" placeholder="Marca">
+           <input type="text" id="modelo" name="name" value="" placeholder="Modelo">
+           <!--Idioma: <select id="locale" name="locale">
+              <option value="es" selected>Castellano</option>
+              <option value="en">English</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="ja">Japanese</option>
+            </select>-->
+           <button id="pb" type="button"  onclick="direction(this),publicar()">Publicar Viaje</button>
 		 </form>
 		</div>
 	    <div  id="solic_arm">
@@ -76,7 +85,7 @@ if (ISSET($_SESSION["email"])) {
           <input type="text" id="lll" placeholder="lugar de llegada"><br>
           <input type="date" id="ddate" name="name" value="" placeholder="Fecha" onFocus="calendario(this)">
           <br><br>
-          <button type="button" onclick="solicitar()" >Solicitar</button>
+          <button id="sl" type="button" onclick="direction(this),solicitar()" >Solicitar</button>
 		</div>
 		<div class="option_">
 		  <div id="arm_v" class="arm_v ac_b" onclick="p_v(this)"> <a > ARMAR UN VIAJE</a></div>
@@ -85,14 +94,19 @@ if (ISSET($_SESSION["email"])) {
       </div>
       <div  id="viaje_publico" class="muestras">
         <center><div id="mapa">
-        </div></center>
+        </div><br>
+        <br>
+        <br>
+        <br>
+        <div id="response"></div>
+        </center>
         
 		</div>
-    <div  id="viaje_solicitado" class="muestras">
+   <!-- <div id="viaje_solicitado" class="muestras">
            <center><div id="mapa">
            </div></center>
 
-    </div>
+    </div>-->
 	  </center>
       <script type="text/javascript">
 	    function p_v(obe){

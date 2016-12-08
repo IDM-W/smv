@@ -56,8 +56,8 @@ public function validar()
             }else{
               @session_start();
                $_SESSION['nombre']=$r[0];
-               $_SESSION['telefono']=$consul[0]['3'];
-               $_SESSION['email']=$consul[0]['1'];
+               $_SESSION['telefono']=$r[4];
+               $_SESSION['email']=$r[1];
               header('location:../inicio.php');
             }
    }

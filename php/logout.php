@@ -1,5 +1,5 @@
 <?php
 
 session_start();
-unset($_SESSION['facebook_access_token']);
+unset($_SESSION['email']);
 header('Location: ../index.php'); ?>

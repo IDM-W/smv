@@ -18,12 +18,12 @@ function publicar() {
 },
            success:function(datos){
              if (datos==0) {
-               alert("no se puedo insertar");
+               alert("no se puedo insertar")
              }else {
 
 
                $("#viaje_publico").css("display","block");
-               document.getElementById('response').innerHTML=datos;
+               document.getElementById('viaje_publico').innerHTML=document.getElementById('viaje_publico').innerHTML+datos;
                $("#ls").val("");
                $("#ll").val("");
                $("#date").val("");
@@ -54,7 +54,8 @@ function mostrarv() {
 
           },
            success:function(datos){
-              $("#v_populares").html(datos);
+             v=$("#Viajes_p").html();
+              $("#Viajes_p").html(v+datos);
            },
            error: function ( jqXHR, textStatus, errorThrown ){
                 alert (errorThrown);
@@ -80,11 +81,13 @@ function solicitar() {
              if (datos==0) {
                alert(datos)
              }else {
-               $("#viaje_publico").css("display","block");
-           document.getElementById('response').innerHTML= datos;
-           $("#lls").val("");
+
+               $("#lls").val("");
                $("#lll").val("");
                $("#ddate").val("");
+
+               $("#viaje_publico").css("display","block");
+           document.getElementById('viaje_publico').innerHTML= document.getElementById('viaje_publico').innerHTML+datos;
              }
 
            },
@@ -113,35 +116,4 @@ function mostrars() {
            }
 
      });
-}
-function buscar() {
-  $.ajax({
-           type:'POST',
-           url:"php/buscar.php",
-           dataType:'HTML',
-           data:{
-            s:$("#lds").val(),
-            l:$("#ldl").val()
-           },
-           beforeSend: function(){
-
-          },
-           success:function(datos){
-              if (datos==0) {
-               window.alert("no hay con esas rutas" );
-             }else{
-               $("#v_populares").html("");
-                $("#v_populares").html(datos);
-             }
-           },
-           error: function ( jqXHR, textStatus, errorThrown ){
-                alert (errorThrown);
-           }
-
-     });
-}
-function validar() {
-   if ($("")) {
-
-   }
 }

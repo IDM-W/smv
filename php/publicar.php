@@ -39,7 +39,7 @@ $r=$clase->pvi($p);
         $query->bindParam(':modelo',$res[7]);
         $query->execute();
         if (!$query) {
-          echo 0;
+          echo 12;
         }else{
           $e=$query->rowCount();
            if ($e==1) {

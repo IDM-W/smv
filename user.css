@@ -142,7 +142,7 @@
 }
 #viaje_publico{
 	position:relative;
-	 padding-top:20px;
+	 padding-top:0px;
  margin-top:-300px;
  margin-left:0px;
  margin-right: 10px;
@@ -173,9 +173,11 @@ display: none;
    height: 40px;
 }
 #mapa{
-	width:70%;
+	position: relative;
+	width:100%;
 	background: green;
 	height: 300px;
+	
 }
 #viaje_solicitado table{
 	  width: 100%;
@@ -205,4 +207,12 @@ table tr{
 	height: 40px;
 	background: #a5a595;
 	margin-bottom:  40px;
+}
+.gmnoprint{
+	height: 15px;
+}
+#response{
+	position: relative;
+	top:20px;
+	
 }
