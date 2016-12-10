@@ -24,7 +24,7 @@ setDirections("barranquilla", "bogota", "es");
 }
 
 function setDirections(fromAddress, toAddress, locale) {
-	
+
 gdir.load("from: " + fromAddress + " to: " + toAddress,
 { "locale": "es" });
 }
@@ -60,17 +60,16 @@ function direction (ps) {
 	if(ps.id=="sl"){
 	 var origen=document.getElementById("lls").value;
 	 var destino=document.getElementById("lll").value;
-	 setDirections(origen,destino);		
+	 setDirections(origen,destino);
 	}else if(ps.id=="pb"){
 	 var origen=document.getElementById("ls").value;
-	 var destino=document.getElementById("ll").value;		 
-	 setDirections(origen,destino);		
+	 var destino=document.getElementById("ll").value;
+	 setDirections(origen,destino);
 	}else if(ps.id=="ivp"){
 	 var origen=document.getElementById("lds").value;
-	 var destino=document.getElementById("ldl").value;		 
-	 setDirections(origen,destino);		
+	 var destino=document.getElementById("ldl").value;
+	 setDirections(origen,destino);
 	}
 
-  
-}
 
+}

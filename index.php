@@ -1,11 +1,8 @@
 <?php
-
-
 session_start();
   if (ISSET($_SESSION["email"])) {
     header('location:inicio.php');
-      }
-    else {
+      }else {
         }
 ?>
 
@@ -19,30 +16,32 @@ type="text/javascript"></script>-->
 	<link rel="stylesheet" type="text/css" href="font_icon/style.css" >
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src=js/js.js></script>
+
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js">    </script>
   <script type="text/javascript" src="js/ajax.js">
   </script>
     <script type="text/javascript" src="js/maps/map.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&sensor=false&libraries=places"></script>
+    <script type="text/javascript">
+    function init1() {
+        var input = document.getElementById('lds');
+        var options = {
+              types: ['(cities)'],
+          };
+        var autocomplete = new google.maps.places.Autocomplete(input, options);
 
-<script type="text/javascript">
-   function lo() {
-     document.getElementById('l').style.display="block";
-     document.getElementById('r').style.display="none";
-   }
-   function re() {
-     document.getElementById('r').style.display="block";
-     document.getElementById('l').style.display="none";
-   }
-   function auto() {
-     // configuramos el control que hemos de utilizar para la busqueda de productos
-       $("#txtProducto").autocomplete({
-           source: "json.json",
-           minLength: 1,
-           select: productoSeleccionado,
-           focus: productoFoco
-       });
-   }
-  </script>
+        }
+        function init2() {
+
+          var input = document.getElementById('ldl');
+         var options = {
+               types: ['(cities)'],
+           };
+         var autocomplete = new google.maps.places.Autocomplete(input, options);
+        }
+        google.maps.event.addDomListener(window, 'load', init1);
+        google.maps.event.addDomListener(window, 'load', init2);
+    </script>
    </head>
    <body onload="mostrarv()" >
 	    <input id="loger" type="checkbox"></input>
@@ -91,24 +90,16 @@ type="text/javascript"></script>-->
 		</form>
 	   </center>
 	  </div>
-
-
-
 	       <div id="Viajes_p">
             <a>Buscar viaje</a><br>
 	       	<input id="lds" placeholder="Salida" class="search" type="search" /><input id="ldl" placeholder="Llegada" class="search" type="search" /><input id="ivp" class="btn azul cur_p1" type="button" value="Buscar" onclick="buscar(),mapdirec()"/><br>
 	       	<br>
 		       <a>Viajes populares</a><br>
                <div class="hnm" id="v_populares">
-
                </div>
-
 	       </div>
-
 	  <footer class="pie_pag">
             <center><a>Copyright © 2016-2016</a></center>
-
 	  </footer>
-
    </body>
 </html>

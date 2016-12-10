@@ -271,7 +271,7 @@ ul li:hover{
 	padding-top:2px;
 	padding-bottom:5px;
 	-webkit-transition:all 0.3s ease-in-out;
-    border-bottom: solid 1px #dcdcdc; 	
+    border-bottom: solid 1px #dcdcdc;
 }
 .btn{
 	height: 30px;
@@ -280,17 +280,17 @@ ul li:hover{
 	border-radius:8px;
 	color:white;
 	background: #0278BA;
-	
+
 }
 .azul:hover{
-	background: #0191CB;	
+	background: #0191CB;
 }
 .cur_p1{
 	cursor:pointer;
 }
 #v_populares{
 	width: 100%;
-	
+
 }
 .hnm{
 	height: inherit;
@@ -302,4 +302,13 @@ ul li:hover{
 	background: rgba(51,51,51,0.1);
 	width:60%;
 	height: 40%;
+}
+.pac-container {
+	height: 100px;
+}
+.pac-logo{
+	height: 200px;
+}
+.pac-item{
+	height: 35px;
 }

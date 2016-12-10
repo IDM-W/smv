@@ -14,26 +14,130 @@ if (ISSET($_SESSION["email"])) {
    <head>
     <meta charset="utf-8"></meta>
 	<title>Se armo el viaje</title>
-<script src="http://maps.google.com/maps?file=api&amp;v=2&oe=ISO-8859-1;&amp;key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78"
-type="text/javascript"></script>
-	<link rel="stylesheet" type="text/css" href="font_icon/style.css" >
-	<link rel="stylesheet" type="text/css" href="user.css"></link>
-	<link rel="stylesheet" type="text/css" href="style.css">
-  <script type="text/javascript" src=js/js.js></script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&sensor=false&libraries=places"></script>
+<link rel="stylesheet" href="/css/master.css" media="screen" title="no title" charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="font_icon/style.css" >
+<link rel="stylesheet" type="text/css" href="user.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="js/js.js">  </script>
+
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js">    </script>
+  <script type="text/javascript">
+  var map = null;
+  var directionsDisplay = null;
+  var directionsService = null;
+
+  function initial() {
+
+     var myLatlng = new google.maps.LatLng(10.9642, -74.7970);
+     var myOptions = {
+         zoom: 4,
+         center: myLatlng,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
+     map = new google.maps.Map($("#mapa").get(0), myOptions);
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsService = new google.maps.DirectionsService();
+  }
+
+  function getDirections(s,l){
+  var start =$("#"+s).val();
+  var end = $("#"+l).val();
+  if(!start || !end){
+  alert("Lugar de salida o llegada estan vacios");
+  return;
+  }
+
+  var request = {
+         origin: start,
+         destination: end,
+   travelMode: google.maps.TravelMode.DRIVING,
+   unitSystem: google.maps.UnitSystem.METRIC,
+         provideRouteAlternatives: true
+     };
+  directionsService.route(request, function(response, status) {
+         if (status == google.maps.DirectionsStatus.OK) {
+             directionsDisplay.setMap(map);
+             
+             directionsDisplay.setDirections(response);
+             if (s.id=="ls") {
+               publicar();
+             }else{
+               solicitar();
+             }
+         } else {
+             alert("There is no directions available between these two points");
+         }
+     });
+  }
+
+  //$('#search').on('click', function(){ getDirections(); });
+
+  $(document).ready(function() {
+     initial();
+  });
+  function b(id) {
+   var s;
+  var l;
+  if (id.id=="sl") {
+    s="lls";
+    l="lll"
+
+
+  }else{
+    s="ls";
+    l="ll";
+
+  }
+  getDirections(s,l);
+  }
+  </script>
   <script type="text/javascript" src="js/ajax.js"></script>
   <script type="text/javascript" src="js/maps/map.js"></script>
-
-
-
   <script >
+  function init1() {
+      var input = document.getElementById('lls');
+      var options = {
+            types: ['(cities)'],
+        };
+      var autocomplete = new google.maps.places.Autocomplete(input, options);
 
-  $( function() {
-//$( "#ddate" ).datepicker();
-} );
+      }
+      function init2() {
+
+        var input = document.getElementById('lll');
+       var options = {
+             types: ['(cities)'],
+         };
+       var autocomplete = new google.maps.places.Autocomplete(input, options);
+      }
+      function init3() {
+          var input = document.getElementById('ls');
+          var options = {
+                types: ['(cities)'],
+            };
+          var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+          }
+          function init4() {
+
+            var input = document.getElementById('ll');
+           var options = {
+                 types: ['(cities)'],
+             };
+           var autocomplete = new google.maps.places.Autocomplete(input, options);
+          }
+google.maps.event.addDomListener(window, 'load', init1);
+google.maps.event.addDomListener(window, 'load', init2);
+google.maps.event.addDomListener(window, 'load', init3);
+google.maps.event.addDomListener(window, 'load', init4);
+
   </script>
+
    </head>
-   <body onload="initialize()" >
+   <body  >
 	   <input id="user_menu" type="checkbox"></input>
        <header role="navegation">
         <nav class="menu">
@@ -77,15 +181,15 @@ type="text/javascript"></script>
               <option value="de">German</option>
               <option value="ja">Japanese</option>
             </select>-->
-           <button id="pb" type="button"  onclick="direction(this),publicar()">Publicar Viaje</button>
+           <button id="pb" type="button"  onclick="b(this),publicar()">Publicar Viaje</button>
 		 </form>
 		</div>
 	    <div  id="solic_arm">
-          <input type="text" id="lls" placeholder="lugar de salida"><br>
+          <input type="text" id="lls" placeholder="lugar de salida" autocomplete="on"><br>
           <input type="text" id="lll" placeholder="lugar de llegada"><br>
           <input type="date" id="ddate" name="name" value="" placeholder="Fecha" onFocus="calendario(this)">
           <br><br>
-          <button id="sl" type="button" onclick="direction(this),solicitar()" >Solicitar</button>
+          <button id="sl" type="button" onclick="b(this)" >Solicitar</button>
 		</div>
 		<div class="option_">
 		  <div id="arm_v" class="arm_v ac_b" onclick="p_v(this)"> <a > ARMAR UN VIAJE</a></div>
@@ -129,6 +233,8 @@ type="text/javascript"></script>
             <center><a>Copyright © 2016-2016</a></center>
 
 	  </footer>
+  <script type="text/javascript">
 
+  </script>
    </body>
 </html>

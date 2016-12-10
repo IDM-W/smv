@@ -177,7 +177,7 @@ display: none;
 	width:100%;
 	background: green;
 	height: 300px;
-	
+
 }
 #viaje_solicitado table{
 	  width: 100%;
@@ -214,5 +214,14 @@ table tr{
 #response{
 	position: relative;
 	top:20px;
-	
+
+}
+.pac-container {
+	height: 100px;
+}
+.pac-logo{
+	height: 200px;
+}
+.pac-item{
+	height: 35px;
 }
