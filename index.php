@@ -9,8 +9,9 @@ session_start();
 <!DOCTYPE html>
 <html>
    <head>
-    <meta charset="utf-8"></meta>
+
 	<title>Se armo el viaje</title>
+          <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&oe=ISO-8859-1;&amp;key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78"
 type="text/javascript"></script>-->
 	<link rel="stylesheet" type="text/css" href="font_icon/style.css" >

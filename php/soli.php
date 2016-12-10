@@ -41,7 +41,7 @@ $r=$clase->svi($p);
               echo '<table>
 
                 <tr height="20">
-                  <td>'.$_SESSION['nombre'].'</td>
+                  <td>'.utf8_decode($_SESSION['nombre']).'</td>
                   <td>'.$res[0].'</td>
                   <td>'.$res[1].'</td>
                   <td>'.$res[2].'</td>

@@ -23,9 +23,9 @@ private $con;
           <table>
             <tr>
 
-              <td id="s">'.$row[4].'  </td>
+              <td id="s">'.utf8_encode($row[4]).'  </td>
               <td><span class="icon-man"></span><label class="icon-car"></label></td>
-              <td >  '.$row[5].'</td>
+              <td >  '.utf8_encode($row[5]).'</td>
               <td >  $'.$row[9].'</td>
               <a href="#" id="'.$row[0].'"><td><label id="subirme">Subirme</label></td></a>
               <div class=separador></div>

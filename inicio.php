@@ -12,10 +12,11 @@ if (ISSET($_SESSION["email"])) {
 <!DOCTYPE html>
 <html>
    <head>
-    <meta charset="utf-8"></meta>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 	<title>Se armo el viaje</title>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&sensor=false&libraries=places"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&sensor=false&libraries=places&language=es"></script>
 <link rel="stylesheet" href="/css/master.css" media="screen" title="no title" charset="utf-8">
 
 <link rel="stylesheet" type="text/css" href="font_icon/style.css" >
@@ -31,13 +32,13 @@ if (ISSET($_SESSION["email"])) {
 
   function initial() {
 
-     var myLatlng = new google.maps.LatLng(10.9642, -74.7970);
-     var myOptions = {
-         zoom: 4,
-         center: myLatlng,
-         mapTypeId: google.maps.MapTypeId.ROADMAP
-     };
-     map = new google.maps.Map($("#mapa").get(0), myOptions);
+       var myLatlng = new google.maps.LatLng(10.9642, -74.7970);
+       var myOptions = {
+         zoom: 4,
+       center: myLatlng,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
+        map = new google.maps.Map($("#mapa").get(0), myOptions);
   directionsDisplay = new google.maps.DirectionsRenderer();
   directionsService = new google.maps.DirectionsService();
   }
@@ -51,32 +52,28 @@ if (ISSET($_SESSION["email"])) {
   }
 
   var request = {
-         origin: start,
-         destination: end,
+           origin: start,
+      destination: end,
    travelMode: google.maps.TravelMode.DRIVING,
    unitSystem: google.maps.UnitSystem.METRIC,
-         provideRouteAlternatives: true
-     };
+       provideRouteAlternatives: true
+          };
   directionsService.route(request, function(response, status) {
-         if (status == google.maps.DirectionsStatus.OK) {
-             directionsDisplay.setMap(map);
-             
-             directionsDisplay.setDirections(response);
-             if (s.id=="ls") {
-               publicar();
-             }else{
-               solicitar();
-             }
-         } else {
-             alert("There is no directions available between these two points");
-         }
-     });
-  }
+      if (status == google.maps.DirectionsStatus.OK) {
+          directionsDisplay.setMap(map);
+         directionsDisplay.setDirections(response);
+
+            } else {
+                alert("There is no directions available between these two points");
+              }
+           });
+        }
 
   //$('#search').on('click', function(){ getDirections(); });
 
   $(document).ready(function() {
-     initial();
+  initial();
+
   });
   function b(id) {
    var s;
@@ -129,10 +126,10 @@ if (ISSET($_SESSION["email"])) {
              };
            var autocomplete = new google.maps.places.Autocomplete(input, options);
           }
-google.maps.event.addDomListener(window, 'load', init1);
-google.maps.event.addDomListener(window, 'load', init2);
-google.maps.event.addDomListener(window, 'load', init3);
-google.maps.event.addDomListener(window, 'load', init4);
+            google.maps.event.addDomListener(window, 'load', init1);
+            google.maps.event.addDomListener(window, 'load', init2);
+            google.maps.event.addDomListener(window, 'load', init3);
+            google.maps.event.addDomListener(window, 'load', init4);
 
   </script>
 
@@ -189,7 +186,7 @@ google.maps.event.addDomListener(window, 'load', init4);
           <input type="text" id="lll" placeholder="lugar de llegada"><br>
           <input type="date" id="ddate" name="name" value="" placeholder="Fecha" onFocus="calendario(this)">
           <br><br>
-          <button id="sl" type="button" onclick="b(this)" >Solicitar</button>
+          <button id="sl" type="button" onclick="b(this),solicitar()" >Solicitar</button>
 		</div>
 		<div class="option_">
 		  <div id="arm_v" class="arm_v ac_b" onclick="p_v(this)"> <a > ARMAR UN VIAJE</a></div>

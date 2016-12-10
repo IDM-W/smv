@@ -80,7 +80,7 @@ function solicitar() {
              if (datos==0) {
                alert(datos)
              }else {
-               $("#viaje_publico").css("display","block");
+              
            document.getElementById('response').innerHTML= datos;
            $("#lls").val("");
                $("#lll").val("");
