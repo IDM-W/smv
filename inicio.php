@@ -142,6 +142,7 @@ if (ISSET($_SESSION["email"])) {
 				<li><a  id="">Logo</a></li>
 				<li><a id="">Documentación</a></li>
 				<li><a  id="">Contactanos</a></li>
+				<li><a  id="">Buscar viaje</a></li>
 				<div class="user_my">
 				  <!--<li class="no_select"><label class="icon-user fs"  id="login"><a></a></label></li>-->
 				  <li class="no_select"><label for="user_menu" id="User"><label class="icon-user fs"  id="login"></label><a style=""><?php echo $_SESSION['nombre'];

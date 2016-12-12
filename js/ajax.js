@@ -140,6 +140,50 @@ function buscar() {
 
      });
 }
+function embarcar(id){
+	var dato={"id":id.id};
+
+$.ajax({
+           type:'POST',
+           url:"php/embarcar.php",
+           dataType:'HTML',
+           data:dato,
+           beforeSend: function(){
+
+          },
+           success:function(datos){
+             //window.alert(datos);
+             //document.getElementById("v_populares").innerHTML=datos;
+           },
+           error: function ( jqXHR, textStatus, errorThrown ){
+                alert (errorThrown);
+           }
+
+     });	
+}
+function subirme(id){
+    document.getElementById("v_populares").innerHTML="";
+	var dato={"id":id.id};
+
+$.ajax({
+           type:'POST',
+           url:"php/subirme.php",
+           dataType:'HTML',
+           data:dato,
+           beforeSend: function(){
+
+          },
+           success:function(datos){
+             // window.alert(datos);
+             document.getElementById("v_populares").innerHTML=datos;
+           },
+           error: function ( jqXHR, textStatus, errorThrown ){
+                alert (errorThrown);
+           }
+
+     });	
+}
+
 function validar() {
    if ($("")) {
 

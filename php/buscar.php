@@ -25,8 +25,8 @@ class  b
      $r=$saneo->s();
     try{
        $stmt = $this->con->prepare("SELECT * FROM pv WHERE lugar_s=:lds  AND lugar_l=:ldl");
-       $r[0]=utf8_decode($r[0]);
-        $r[1]=utf8_decode($r[1]);
+        $r[0]=$r[0];
+        $r[1]=$r[1];
          $stmt->bindParam("lds", $r[0]);
          $stmt->bindParam("ldl", $r[1]) ;
          $stmt->execute();
@@ -40,11 +40,11 @@ class  b
           <table>
             <tr>
 
-              <td id="s">'.utf8_encode($row[4]).'  </td>
+              <td id="s">'.$row[4].'  </td>
               <td><span class="icon-man"></span><label class="icon-car"></label></td>
-              <td >  '.utf8_encode($row[5]).'</td>
+              <td >  '.$row[5].'</td>
               <td >  $'.$row[9].'</td>
-              <a href="#" id="'.$row[0].'"><td><label id="subirme">Subirme</label></td></a>
+              <a href="#" ><td><label class="subirme" onclick="subirme(this)" id="'.$row[0].'">Subirme</label></td></a>
               <div class=separador></div>
             </tr>
           </table>

@@ -241,7 +241,7 @@ ul li:hover{
   border-bottom-color: #FF4848;
 }
 
-#subirme{
+.subirme{
   border: 1px solid #0178CB;
   font-size:16px;
   position:relative;
