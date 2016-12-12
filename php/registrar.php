@@ -42,23 +42,25 @@ public function validar()
        if ($nf[0][0]>0) {
          echo "ya existe";
        }else {
-        $query = $this->con->prepare('INSERT INTO usuarios values (?,?,?,?,?,?)');
+         $ruta="php/img/usuario.png";
+        $query = $this->con->prepare('INSERT INTO usuarios values (?,?,?,?,?,?,?)');
            $query->bindParam(1,$r[0]);
            $query->bindParam(2,$r[1]);
            $query->bindParam(3,$r[2]);
            $query->bindParam(4,$r[3]);
            $query->bindParam(5,$es);
            $query->bindParam(6,$v,PDO::PARAM_INT);
+           $query->bindParam(7,$ruta);
            $query->execute();
 
            if (!$query) {
             echo "mal";
             }else{
-              @session_start();
-               $_SESSION['nombre']=$r[0];
-               $_SESSION['telefono']=$r[4];
-               $_SESSION['email']=$r[1];
-              header('location:../inicio.php');
+          @session_start();
+           $_SESSION['nombre']=$r[0];
+            $_SESSION['telefono']=$r[4];
+          $_SESSION['email']=$r[1];
+          header('location:../inicio.php');
             }
    }
  }

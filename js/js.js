@@ -69,6 +69,7 @@ function registro() {
         }
       }
         if (conta!=6) {
+
         }else{
           $.ajax({
               url: 'php/exephp/regi.php',
