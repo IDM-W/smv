@@ -27,7 +27,7 @@
               echo '<div class="" id="foto">
                	 	<div id="img">
                	 	</div>
-               	 	<label><a>'.$row[2].'</a></label>
+               	 	<label><a>'.$row[2].'</a></label><br>
                	 	<label>Conductor:<a>Novato</a></label>           	 	
                	 </div>
                	 <div class="" id="oferta">

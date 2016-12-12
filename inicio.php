@@ -1,8 +1,15 @@
 <?php
-
+  require 'php/conexion.php';
+  $con=new Database();
 session_start();
+$img="";
 if (ISSET($_SESSION["email"])) {
-
+      $stmt = $con->prepare("SELECT * FROM usuarios where email=:email" );
+      $stmt->bindParam(':email',$_SESSION['email']);
+      $stmt->execute();
+      while ($row=$stmt->fetch()) {
+        $img=$row[6];
+      }
     }
   else {
       header('location:index.php');
@@ -17,8 +24,6 @@ if (ISSET($_SESSION["email"])) {
 	<title>Se armo el viaje</title>
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&sensor=false&libraries=places&language=es"></script>
-<link rel="stylesheet" href="/css/master.css" media="screen" title="no title" charset="utf-8">
-
 <link rel="stylesheet" type="text/css" href="font_icon/style.css" >
 <link rel="stylesheet" type="text/css" href="user.css">
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -134,7 +139,7 @@ if (ISSET($_SESSION["email"])) {
   </script>
 
    </head>
-   <body  >
+   <body >
 	   <input id="user_menu" type="checkbox"></input>
        <header role="navegation">
         <nav class="menu">
@@ -142,10 +147,10 @@ if (ISSET($_SESSION["email"])) {
 				<li><a  id="">Logo</a></li>
 				<li><a id="">Documentación</a></li>
 				<li><a  id="">Contactanos</a></li>
-				<li><a  id="">Buscar viaje</a></li>
+				<li><a href="buscar.php" id="">Buscar viaje</a></li>
 				<div class="user_my">
 				  <!--<li class="no_select"><label class="icon-user fs"  id="login"><a></a></label></li>-->
-				  <li class="no_select"><label for="user_menu" id="User"><label class="icon-user fs"  id="login"></label><a style=""><?php echo $_SESSION['nombre'];
+				  <li class="no_select"><label for="user_menu" id="User"><img id="fope" src="<?php echo $img ?>" alt="" /><a style=""><?php echo $_SESSION['nombre'];
            ?></a></label></li>
 				</div>
 		    </ul>
@@ -154,7 +159,8 @@ if (ISSET($_SESSION["email"])) {
       <div class="inp" id="menu_user">
 	   <center>
 	    <form>
-		    <center><input  type="button" id="logout" onclick="window.location.href='php/logout.php';" value="Cerrar Sesion"></center>
+		    <center><input  type="button" id="cesion" onclick="window.location.href='php/logout.php';" value="Cerrar Sesion"></center>
+        <center><input  type="button" id="perfil" onclick="fade()" value="Foto de perfil"></center>
 		</form>
 	   </center>
 	  </div>
@@ -166,7 +172,7 @@ if (ISSET($_SESSION["email"])) {
 		 <form  action="" data="">
            <input name="salida" type="text" id="ls"  placeholder="lugar de salida">
            <input name="llegada" type="text" id="ll"  placeholder="lugar de llegada">
-           <input type="date" id="date" name="name" value="" placeholder="Fecha" onFocus="calendario(this)">
+           <input type="date" id="date" name="name" value="" placeholder="Fecha" >
            <input type="time" name="hora" id="hora" placeholder="Hora de salida">
            <input type="number" id="cupo" placeholder="Cantidad de psajeros">
            <input type="text" id="precio" name="name" value="" placeholder="Precio">
@@ -234,5 +240,12 @@ if (ISSET($_SESSION["email"])) {
   <script type="text/javascript">
 
   </script>
+  <form id="op" enctype="multipart/form-data">
+    <input type="file" name="foto" id="foto" value="Elegir foto"><br>
+    <input type="button" id="gu" onclick="gufo()" value="Guardar" >
+  </form>
+  <div id="opaco">
+
+  </div>
    </body>
 </html>

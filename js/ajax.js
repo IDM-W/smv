@@ -162,7 +162,7 @@ $.ajax({
      });	
 }
 function subirme(id){
-    document.getElementById("v_populares").innerHTML="";
+
 	var dato={"id":id.id};
 
 $.ajax({
@@ -174,8 +174,14 @@ $.ajax({
 
           },
            success:function(datos){
+           	if(datos==""){
+           		window.alert("Debe iniciar sesión");
+           	}else{
+           		document.getElementById("v_populares").innerHTML="";
+           		document.getElementById("v_populares").innerHTML=datos;
+           	}
              // window.alert(datos);
-             document.getElementById("v_populares").innerHTML=datos;
+             
            },
            error: function ( jqXHR, textStatus, errorThrown ){
                 alert (errorThrown);
