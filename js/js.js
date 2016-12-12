@@ -90,7 +90,40 @@ function login() {
        }
    }
    if (contador==2) {
-
       document.forms['l'].submit();
    }
+}
+function fade() {
+    $('#op').fadeIn('slow');
+    $("#opaco").fadeIn("slow");
+    $('#opaco').height($(window).height());
+}
+function gufo() {
+  var archivos = document.getElementById("foto");
+  var archivo = archivos.files[0];
+		var data = new FormData();
+   data.append('foto',archivo);
+
+           var ruta = "php/foto.php";
+           $.ajax({
+               url: ruta,
+               type: "POST",
+               data: data,
+               contentType: false,
+               processData: false,
+               success: function(datos)
+               {
+
+
+                   if (datos==0) {
+                     window.alert( "el archivo no es una imagen" );
+                   }else{
+                  
+
+                     $("#fope").attr("src",datos);
+                     $("#op").fadeOut();
+                     $("#opaco").fadeOut();
+                   }
+               }
+           });
 }

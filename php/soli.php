@@ -24,6 +24,8 @@ $r=$clase->svi($p);
 
     $sa=new saneo($p);
      $res=$sa->s();
+     $res[0]=utf8_decode($res[0]);
+     $res[1]=utf8_decode($res[1]);
      $query = $this->con->prepare('INSERT INTO svi (email,nombre,lugar_s,lugar_l,fecha) values (:email,:nombre,:lugar_s,:lugar_ll,:fecha)');
 
         $query->bindParam(':email',$_SESSION['email']);
@@ -38,10 +40,12 @@ $r=$clase->svi($p);
         }else{
           $e=$query->rowCount();
            if ($e==1) {
+             $res[0]=utf8_encode($res[0]);
+             $res[1]=utf8_encode($res[1]);
               echo '<table>
 
                 <tr height="20">
-                  <td>'.utf8_decode($_SESSION['nombre']).'</td>
+                  <td>'.$_SESSION['nombre'].'</td>
                   <td>'.$res[0].'</td>
                   <td>'.$res[1].'</td>
                   <td>'.$res[2].'</td>
