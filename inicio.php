@@ -157,7 +157,7 @@ if (ISSET($_SESSION["email"])) {
       </header>
       <div class="inp" id="menu_user">
 	   <center>
-	    <form>
+	    <form id="se">
 		    <center><input  type="button" id="cesion" onclick="window.location.href='php/logout.php';" value="Cerrar Sesion"></center>
         <center><input  type="button" id="perfil" onclick="fade()" value="Foto de perfil"></center>
 		</form>
