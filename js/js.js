@@ -96,20 +96,46 @@ function login() {
    contador =0;
    veri=false;
    if ($("#us").val().length==0) {
-        alert("ingrese usuario");
+     $("#noti").html("Infgrese Usuario");
+       $('#notificaciones').fadeIn('slow');
+       $("#notificaciones").attr("background-color","#ff0000");
+       $("#notificaciones").fadeOut(10000);
    }else{
      contador=contador+1;
      veri=true;
    }if (veri==true) {
        if ($("#p").val().length==0) {
-         alert("constraseña vacia");
+         $("#noti").html("Ingrese Contraseña");
+           $('#notificaciones').fadeIn('slow');
+           $("#notificaciones").attr("background-color","#ff0000");
+           $("#notificaciones").fadeOut(10000);
        }else{
          contador=contador+1;
        }
    }
    if (contador==2) {
+     $.ajax({
+         url: 'php/exephp/lo.php',
+         type: "POST",
+         data: {
+           correo:$("#us").val(),
+           co:$("#p").val()
+         },
 
-   document.forms['l'].submit();
+         success: function(datos)
+         {
+             if (datos==0) {
+               $("#noti").html("Usuario no existe");
+                 $('#notificaciones').fadeIn('slow');
+                 $("#notificaciones").attr("background-color","#ff0000");
+                 $("#notificaciones").fadeOut(10000);
+             }else{
+                   document.forms['l'].submit();
+             }
+         }
+     });
+
+
    }
 }
 function fade() {
