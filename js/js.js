@@ -70,9 +70,27 @@ function registro() {
       }
         if (conta!=6) {
         }else{
-              document.forms['r'].submit();
-        }
-        }
+          $.ajax({
+              url: 'php/exephp/regi.php',
+              type: "POST",
+              data: {
+                correo:$("#email").val()
+              },
+
+              success: function(datos)
+              {
+                  if (datos==0) {
+                    $("#noti").html("El correo ya existe");
+                      $('#notificaciones').fadeIn('slow');
+                      $("#notificaciones").attr("background-color","#ff0000");
+                      $("#notificaciones").fadeOut(10000);
+                  }else{
+                       document.forms['r'].submit();
+                  }
+              }
+          });
+
+        }}
 
 function login() {
    contador =0;
@@ -90,7 +108,8 @@ function login() {
        }
    }
    if (contador==2) {
-      document.forms['l'].submit();
+
+   document.forms['l'].submit();
    }
 }
 function fade() {
@@ -118,7 +137,7 @@ function gufo() {
                    if (datos==0) {
                      window.alert( "el archivo no es una imagen" );
                    }else{
-                  
+
 
                      $("#fope").attr("src",datos);
                      $("#op").fadeOut();

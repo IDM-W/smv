@@ -45,6 +45,7 @@ type="text/javascript"></script>-->
     </script>
    </head>
    <body onload="mostrarv()" >
+
 	    <input id="loger" type="checkbox"></input>
 		<input id="regis" type="checkbox"></input>
        <header role="navegation">
@@ -102,5 +103,8 @@ type="text/javascript"></script>-->
 	  <footer class="pie_pag">
             <center><a>Copyright © 2016-2016</a></center>
 	  </footer>
+    <div id="notificaciones">
+         <center><p id="noti">MALO</p></center>
+    </div>
    </body>
 </html>
