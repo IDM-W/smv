@@ -1,7 +1,7 @@
 <?php
 
 
- session_start()
+ session_start();
 
   require_once('vendor/autoload.php');
   require_once('');
