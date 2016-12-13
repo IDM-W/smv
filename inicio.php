@@ -143,9 +143,9 @@ if (ISSET($_SESSION["email"])) {
 	   <input id="user_menu" type="checkbox"></input>
        <header role="navegation">
         <nav class="menu">
-            <ul>
+            <ul>   
 				<li><a  id="">Logo</a></li>
-				<li><a id="">Documentación</a></li>
+				<li><a  id="">Documentación</a></li>
 				<li><a  id="">Contactanos</a></li>
 				<li><a href="buscar.php" id="">Buscar viaje</a></li>
 				<div class="user_my">
