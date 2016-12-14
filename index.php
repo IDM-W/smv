@@ -21,8 +21,11 @@ type="text/javascript"></script>-->
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js">    </script>
   <script type="text/javascript" src="js/ajax.js">
   </script>
-    <script type="text/javascript" src="js/maps/map.js"></script>
+    <!--<script type="text/javascript" src="js/maps/map.js"></script>-->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&sensor=false&libraries=places"></script>
+    <script type="text/javascript" src="js/sdk_js/sdk.js">
+
+    </script>
     <script type="text/javascript">
     function init1() {
         var input = document.getElementById('lds');
@@ -86,7 +89,7 @@ type="text/javascript"></script>-->
           <input type="password" name="ccon"  id="ccon" value="" placeholder="Confirmar Clave">
           <input type="text" name="telefono" id="telefono" value="" placeholder="Telefono">
           <a href="#"><div id="registrarme" onclick="registro()"><span>Registrarme</span></div>	</a>
-		  <div class="facebook_loging">Con facebook</div>
+		  <div class="facebook_loging" onclick="initfa();">Con facebook</div>
 		  <div class="twitter_loging">con twitter</div>
 		  <div class="google_loging">Con goolge</div>
 		</form>
