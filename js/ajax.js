@@ -1,3 +1,4 @@
+mostrarv();
 function publicar() {
   $.ajax({
            type:'POST',
@@ -80,7 +81,7 @@ function solicitar() {
              if (datos==0) {
                alert(datos)
              }else {
-              
+
            document.getElementById('response').innerHTML= datos;
            $("#lls").val("");
                $("#lll").val("");
@@ -159,7 +160,7 @@ $.ajax({
                 alert (errorThrown);
            }
 
-     });	
+     });
 }
 function subirme(id){
 
@@ -181,13 +182,13 @@ $.ajax({
            		document.getElementById("v_populares").innerHTML=datos;
            	}
              // window.alert(datos);
-             
+
            },
            error: function ( jqXHR, textStatus, errorThrown ){
                 alert (errorThrown);
            }
 
-     });	
+     });
 }
 
 function validar() {

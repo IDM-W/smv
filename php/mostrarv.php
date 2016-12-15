@@ -15,7 +15,7 @@ private $con;
   }
   public function mmo()
   {
-     $stmt = $this->con->prepare("SELECT * FROM pv" );
+      $stmt = $this->con->prepare("SELECT * FROM pv" );
       $stmt->execute();
 
       while ($row=$stmt->fetch()) {

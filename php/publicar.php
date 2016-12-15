@@ -25,8 +25,7 @@ header("Content-type: text/plain;charset=utf-8");
     $sa=new saneo($p);
      $res=$sa->s();
      $query = $this->con->prepare('INSERT INTO pv (email,nombre,telefono,lugar_s,lugar_l,fecha,hora,cupos,precio,marca,modelo) values (:email,:nombre,:telefono,:lugar_s,:lugar_ll,:fecha,:hora,:cupos,:precio,:marca,:modelo)');
-        $res[0]=utf8_decode($res[0]);
-        $res[1]=utf8_decode($res[1]);
+
         $query->bindParam(':email',$_SESSION['email']);
         $query->bindParam(':nombre',$_SESSION['nombre']);
         $query->bindParam(':telefono',$_SESSION['telefono']);
@@ -44,8 +43,7 @@ header("Content-type: text/plain;charset=utf-8");
         }else{
           $e=$query->rowCount();
            if ($e==1) {
-             $res[0]=utf8_encode($res[0]);
-             $res[1]=utf8_encode($res[1]);
+
             echo '<table>
               <tr>
                 <td>'.$_SESSION['nombre'].'</td>

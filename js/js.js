@@ -69,28 +69,74 @@ function registro() {
         }
       }
         if (conta!=6) {
+
         }else{
-              document.forms['r'].submit();
-        }
-        }
+          $.ajax({
+              url: 'php/exephp/regi.php',
+              type: "POST",
+              data: {
+                correo:$("#email").val()
+              },
+
+              success: function(datos)
+              {
+                  if (datos==0) {
+                    $("#noti").html("El correo ya existe");
+                      $('#notificaciones').fadeIn('slow');
+                      $("#notificaciones").attr("background-color","#ff0000");
+                      $("#notificaciones").fadeOut(10000);
+                  }else{
+                       document.forms['r'].submit();
+                  }
+              }
+          });
+
+        }}
 
 function login() {
    contador =0;
    veri=false;
    if ($("#us").val().length==0) {
-        alert("ingrese usuario");
+     $("#noti").html("Infgrese Usuario");
+       $('#notificaciones').fadeIn('slow');
+       $("#notificaciones").attr("background-color","#ff0000");
+       $("#notificaciones").fadeOut(10000);
    }else{
      contador=contador+1;
      veri=true;
    }if (veri==true) {
        if ($("#p").val().length==0) {
-         alert("constraseña vacia");
+         $("#noti").html("Ingrese Contraseña");
+           $('#notificaciones').fadeIn('slow');
+           $("#notificaciones").attr("background-color","#ff0000");
+           $("#notificaciones").fadeOut(10000);
        }else{
          contador=contador+1;
        }
    }
    if (contador==2) {
-      document.forms['l'].submit();
+     $.ajax({
+         url: 'php/exephp/lo.php',
+         type: "POST",
+         data: {
+           correo:$("#us").val(),
+           co:$("#p").val()
+         },
+
+         success: function(datos)
+         {
+             if (datos==0) {
+               $("#noti").html("Usuario no existe");
+                 $('#notificaciones').fadeIn('slow');
+                 $("#notificaciones").attr("background-color","#ff0000");
+                 $("#notificaciones").fadeOut(10000);
+             }else{
+                   document.forms['l'].submit();
+             }
+         }
+     });
+
+
    }
 }
 function fade() {
@@ -118,7 +164,7 @@ function gufo() {
                    if (datos==0) {
                      window.alert( "el archivo no es una imagen" );
                    }else{
-                  
+
 
                      $("#fope").attr("src",datos);
                      $("#op").fadeOut();

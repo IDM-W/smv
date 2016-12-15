@@ -21,12 +21,12 @@ private $conm;
            //$this->conm = parent::__construct('mysql:host=localhost;dbname=viaje', 'root', 'n00lv1d4r-m3');
            $host = 'mysql:host=localhost;dbname=viaje;charset=utf8';
            $user = 'root';
-           $pas = 'n00lv1d4r-m3';
+           $pas = '';
            $op = array(
                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8 COLLATE 'utf8mb4_unicode_ci'",
-           ); 
+           );
 
-           $this->conm = parent::__construct($host, $user, $pas, $o);			
+           $this->conm = parent::__construct($host, $user, $pas);
 	    } catch(PDOException $e) {
 
 	        echo  $e->getMessage();

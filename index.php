@@ -25,38 +25,18 @@
 	<title>Se armo el viaje</title>
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
           <meta name="google-signin-client_id" content="297437318621-udqum5rmkic7sjod0nouoq601lbqcj7v.apps.googleusercontent.com">
-	<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&oe=ISO-8859-1;&amp;key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78"
-type="text/javascript"></script>-->
+          <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-    <script type="text/javascript">
-    function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-      console.log('Name: ' + profile.getName());
-      console.log('Image URL: ' + profile.getImageUrl());
-      console.log('Email: ' + profile.getEmail());
-    }
-    function init1() {
-        var input = document.getElementById('lds');
-        var options = {
-              types: ['(cities)'],
-          };
-        var autocomplete = new google.maps.places.Autocomplete(input, options);
+          <!--<script type="text/javascript" src="js/maps/map.js"></script>-->
+          <script type="text/javascript" src="js/sdk_js/sdk.js"></script>
+        	<link rel="stylesheet" type="text/css" href="font_icon/style.css" >
+        	<link rel="stylesheet" type="text/css" href="style.css">
 
-        }
-        function init2() {
 
-          var input = document.getElementById('ldl');
-         var options = {
-               types: ['(cities)'],
-           };
-         var autocomplete = new google.maps.places.Autocomplete(input, options);
-        }
-        google.maps.event.addDomListener(window, 'load', init1);
-        google.maps.event.addDomListener(window, 'load', init2);
-    </script>
+
    </head>
    <body onload="mostrarv()" >
+
 	    <input id="loger" type="checkbox"></input>
 		<input id="regis" type="checkbox"></input>
        <header role="navegation">
@@ -108,7 +88,7 @@ type="text/javascript"></script>-->
           <input type="password" name="ccon"  id="ccon" value="" placeholder="Confirmar Clave">
           <input type="text" name="telefono" id="telefono" value="" placeholder="Telefono">
           <a href="#"><div id="registrarme" onclick="registro()"><span>Registrarme</span></div>	</a>
-		  <div class="facebook_loging">Con facebook</div>
+		  <div class="facebook_loging" onclick="initfa();">Con facebook</div>
 		  <div class="twitter_loging">con twitter</div>
 		  <div class="google_loging">Con goolge</div>
 		</form>
@@ -125,14 +105,43 @@ type="text/javascript"></script>-->
 	  <footer class="pie_pag">
             <center><a>Copyright © 2016-2016</a></center>
 	  </footer>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-  	<link rel="stylesheet" type="text/css" href="font_icon/style.css" >
-  	<link rel="stylesheet" type="text/css" href="style.css">
-  	<script type="text/javascript" src=js/js.js></script>
-  	<script type="text/javascript" src="js/jquery-2.2.3.min.js">    </script>
-    <script type="text/javascript" src="js/ajax.js">
-    </script>
+
+    <div id="notificaciones">
+         <center><p id="noti"></p></center>
+    </div>
+    <script type="text/javascript" src=js/js.js></script>
+    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="js/ajax.js"></script>
+
     <!-- <script type="text/javascript" src="js/maps/map.js"></script>-->
-      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&libraries=places"></script>    
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&libraries=places"></script>
+
+          <script type="text/javascript">
+          function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail());
+          }
+          function init1() {
+              var input = document.getElementById('lds');
+              var options = {
+                    types: ['(cities)'],
+                };
+              var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+              }
+              function init2() {
+
+                var input = document.getElementById('ldl');
+               var options = {
+                     types: ['(cities)'],
+                 };
+               var autocomplete = new google.maps.places.Autocomplete(input, options);
+              }
+              google.maps.event.addDomListener(window, 'load', init1);
+              google.maps.event.addDomListener(window, 'load', init2);
+          </script>
    </body>
 </html>

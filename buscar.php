@@ -1,12 +1,23 @@
 <?php
-
+require 'php/conexion.php';
+$con=new Database();
 session_start();
+$img="";
 if (ISSET($_SESSION["email"])) {
-
-    }
-  else {
-      header('location:index.php');
+    if (ISSET($_SESSION['img'])) {
+      $img=$_SESSION['img'];
+    }else{
+      $stmt = $con->prepare("SELECT * FROM usuarios where email=:email" );
+      $stmt->bindParam(':email',$_SESSION['email']);
+      $stmt->execute();
+      while ($row=$stmt->fetch()) {
+        $img=$row[6];
       }
+    }
+  }
+else {
+    header('location:http://localhost/AJAX/Dropbox/Proyecto_Empresarial/Proyectos_web/smv/smv');
+    }
  ?>
 
 <!DOCTYPE html>
@@ -26,7 +37,7 @@ type="text/javascript"></script>-->
   <script type="text/javascript" src="js/ajax.js">
   </script>
    <!-- <script type="text/javascript" src="js/maps/map.js"></script>-->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&sensor=false&libraries=places"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&sensor=false&libraries=places&language=es"></script>
     <script type="text/javascript">
     function init1() {
         var input = document.getElementById('lds');
@@ -59,7 +70,7 @@ type="text/javascript"></script>-->
 				<li><a href="buscar.php" id="">Buscar viaje</a></li>
 				<div class="user_my">
 				  <!--<li class="no_select"><label class="icon-user fs"  id="login"><a></a></label></li>-->
-				  <li class="no_select"><label for="user_menu" id="User"><label class="icon-user fs"  id="login"></label><a style=""><?php echo $_SESSION['nombre'];
+				  <li class="no_select"><label for="user_menu" id="User"><img id="fope" src="<?php echo $img ?>" alt="" /><a style=""><?php echo $_SESSION['nombre'];
            ?></a></label></li>
 				</div>
 		    </ul>
@@ -73,13 +84,13 @@ type="text/javascript"></script>-->
 	   </center>
 	  </div>
 	       <div id="Viajes_p_b">
-       	
+
              <a>Buscar viaje</a><br>
 	       	 <input id="lds" placeholder="Salida" class="search" type="search" /><input id="ldl" placeholder="Llegada" class="search" type="search" /><input id="ivp" class="btn azul cur_p1" type="button" value="Buscar" onclick="buscar(),mapdirec()"/><br>
 	       	 <br>
 		       <a>Viajes populares</a><br>
                <div class="hnm" id="v_populares">
-            	         	
+
                </div>
 	       </div>
 	  <footer class="pie_pag">

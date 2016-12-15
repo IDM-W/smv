@@ -4,15 +4,27 @@
 session_start();
 $img="";
 if (ISSET($_SESSION["email"])) {
+<<<<<<< HEAD
       $stmt = $con->prepare("SELECT * FROM usuarios where email=:email" );
       $stmt->bindParam(':email',$_SESSION['email']);
       $stmt->execute();
       while ($row=$stmt->fetch()) {
        // $img=$row[6];
+=======
+      if (ISSET($_SESSION['img'])) {
+        $img=$_SESSION['img'];
+      }else{
+        $stmt = $con->prepare("SELECT * FROM usuarios where email=:email" );
+        $stmt->bindParam(':email',$_SESSION['email']);
+        $stmt->execute();
+        while ($row=$stmt->fetch()) {
+          $img=$row[6];
+        }
+>>>>>>> 4462b9f0b9a81ac9c4c9c1d072304dab84123c8c
       }
     }
   else {
-      header('location:index.php');
+      header('location:http://localhost/AJAX/Dropbox/Proyecto_Empresarial/Proyectos_web/smv/smv');
       }
  ?>
 
@@ -158,9 +170,16 @@ if (ISSET($_SESSION["email"])) {
       </header>
       <div class="inp" id="menu_user">
 	   <center>
+<<<<<<< HEAD
 	    <form>
 		    <center class="hnm"><input  type="button" id="cesion" onclick="window.location.href='php/logout.php';" value="Cerrar Sesion"></center>
         <center class="hnm"><input  type="button" id="perfil" onclick="fade()" value="Foto de perfil"></center>
+=======
+
+	    <form id="se">
+		    <center><input  type="button" id="cesion" onclick="window.location.href='php/logout.php';" value="Cerrar Sesion"></center>
+        <center><input  type="button" id="perfil" onclick="fade()" value="Foto de perfil"></center>
+>>>>>>> 4462b9f0b9a81ac9c4c9c1d072304dab84123c8c
 		</form>
 	   </center>
 	  </div>
