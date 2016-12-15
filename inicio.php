@@ -4,11 +4,15 @@
 session_start();
 $img="";
 if (ISSET($_SESSION["email"])) {
-      $stmt = $con->prepare("SELECT * FROM usuarios where email=:email" );
-      $stmt->bindParam(':email',$_SESSION['email']);
-      $stmt->execute();
-      while ($row=$stmt->fetch()) {
-        $img=$row[6];
+      if (ISSET($_SESSION['img'])) {
+        $img=$_SESSION['img'];
+      }else{
+        $stmt = $con->prepare("SELECT * FROM usuarios where email=:email" );
+        $stmt->bindParam(':email',$_SESSION['email']);
+        $stmt->execute();
+        while ($row=$stmt->fetch()) {
+          $img=$row[6];
+        }
       }
     }
   else {

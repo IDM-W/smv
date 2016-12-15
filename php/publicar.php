@@ -43,7 +43,7 @@ header("Content-type: text/plain;charset=utf-8");
         }else{
           $e=$query->rowCount();
            if ($e==1) {
-             
+
             echo '<table>
               <tr>
                 <td>'.$_SESSION['nombre'].'</td>

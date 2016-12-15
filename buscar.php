@@ -1,9 +1,12 @@
 <?php
-  require 'php/conexion.php';
-  $con=new Database();
+require 'php/conexion.php';
+$con=new Database();
 session_start();
 $img="";
 if (ISSET($_SESSION["email"])) {
+    if (ISSET($_SESSION['img'])) {
+      $img=$_SESSION['img'];
+    }else{
       $stmt = $con->prepare("SELECT * FROM usuarios where email=:email" );
       $stmt->bindParam(':email',$_SESSION['email']);
       $stmt->execute();
@@ -11,9 +14,10 @@ if (ISSET($_SESSION["email"])) {
         $img=$row[6];
       }
     }
-  else {
-      header('location:http://localhost/AJAX/Dropbox/Proyecto_Empresarial/Proyectos_web/smv/smv');
-      }
+  }
+else {
+    header('location:http://localhost/AJAX/Dropbox/Proyecto_Empresarial/Proyectos_web/smv/smv');
+    }
  ?>
 
 <!DOCTYPE html>
