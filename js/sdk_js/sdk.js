@@ -42,7 +42,7 @@ function los() {
    console.log(response.data.url );
    img= response.data.url;
    localStorage.setItem("img",img);
-   window.alert( img );
+   
 
 });
 }
@@ -53,7 +53,7 @@ function ll1() {
    nombre=response.name;
    idd=response.id;
    fi=response.first_name;
-  alert( idd );
+
 
    localStorage.setItem("id_fa", idd);
    localStorage.setItem("nombre", fi);
