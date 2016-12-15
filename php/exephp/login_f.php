@@ -35,7 +35,7 @@ private  $pas;
 
        $count=$stmt->rowCount();
     if ($count>0){
-         $data=$stmt->fecthAll();
+         $data=$stmt->fetchAll();
          session_start();
          $_SESSION['email']=$data[0][1];
          $_SESSION['id']=$r[0];
