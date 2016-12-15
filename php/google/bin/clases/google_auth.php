@@ -7,8 +7,8 @@
     function __construct(Google_Client $googleClient=null){
         $this->client=$googleClient;
         if ($this->client){
-              $this->client->setClientId('750505495079-notv4s5fhnkfpt3en0q88q3eqmjs0vth.apps.googleusercontent.com');
-              $this->client->setClientSecret('Y7kwqBMtSZO7CaLvaJA8ZLh9');
+              $this->client->setClientId('781484041395-ro4n6a0so9sp3d2704641sfdu9b8msbr.apps.googleusercontent.com');
+              $this->client->setClientSecret('NXWNsjbe-T9s7ntt9dx3DDCf');
               $this->client->setRedirectUri('http://localhost/smv/index.php');
               $this->client->setScopes('email');
         }

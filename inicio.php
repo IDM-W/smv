@@ -4,13 +4,7 @@
 session_start();
 $img="";
 if (ISSET($_SESSION["email"])) {
-<<<<<<< HEAD
-      $stmt = $con->prepare("SELECT * FROM usuarios where email=:email" );
-      $stmt->bindParam(':email',$_SESSION['email']);
-      $stmt->execute();
-      while ($row=$stmt->fetch()) {
-       // $img=$row[6];
-=======
+
       if (ISSET($_SESSION['img'])) {
         $img=$_SESSION['img'];
       }else{
@@ -20,7 +14,7 @@ if (ISSET($_SESSION["email"])) {
         while ($row=$stmt->fetch()) {
           $img=$row[6];
         }
->>>>>>> 4462b9f0b9a81ac9c4c9c1d072304dab84123c8c
+
       }
     }
   else {
@@ -35,7 +29,7 @@ if (ISSET($_SESSION["email"])) {
 
 	<title>Se armo el viaje</title>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&sensor=false&libraries=places&language=es"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&libraries=places&language=es"></script>
 <link rel="stylesheet" type="text/css" href="font_icon/style.css" >
 <link rel="stylesheet" type="text/css" href="user.css">
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -109,7 +103,7 @@ if (ISSET($_SESSION["email"])) {
   }
   </script>
   <script type="text/javascript" src="js/ajax.js"></script>
-  <script type="text/javascript" src="js/maps/map.js"></script>
+  <!--<script type="text/javascript" src="js/maps/map.js"></script>-->
   <script >
   function init1() {
       var input = document.getElementById('lls');
@@ -170,16 +164,11 @@ if (ISSET($_SESSION["email"])) {
       </header>
       <div class="inp" id="menu_user">
 	   <center>
-<<<<<<< HEAD
-	    <form>
-		    <center class="hnm"><input  type="button" id="cesion" onclick="window.location.href='php/logout.php';" value="Cerrar Sesion"></center>
-        <center class="hnm"><input  type="button" id="perfil" onclick="fade()" value="Foto de perfil"></center>
-=======
 
 	    <form id="se">
-		    <center><input  type="button" id="cesion" onclick="window.location.href='php/logout.php';" value="Cerrar Sesion"></center>
-        <center><input  type="button" id="perfil" onclick="fade()" value="Foto de perfil"></center>
->>>>>>> 4462b9f0b9a81ac9c4c9c1d072304dab84123c8c
+		    <center class="hnm"><input  type="button" id="cesion" onclick="window.location.href='php/logout.php';" value="Cerrar Sesion"></center>
+        <center class="hnm"><input  type="button" id="perfil" onclick="fade()" value="Foto de perfil"></center>
+
 		</form>
 	   </center>
 	  </div>

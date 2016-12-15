@@ -130,14 +130,14 @@
 .arm_s{
 	width:49%;
 }
-.ac_w a{
+.ac_w a:hover{
 	color:white;
 }
 .ac_b a{
 	color:#2966B8;
 }
+
 .azul{
-	color:white;
   	background:#2966B8;
 }
 #viaje_publico{
@@ -234,7 +234,7 @@ table tr{
   width:60%;
   left:15%;
   background: rgba(51,51,51,0.1);
-  overflow-x: hidden;	
+  overflow-x: hidden;
 }
 #Viajes_p_b a{
 	color:#0178CB;
@@ -245,7 +245,7 @@ table tr{
 	height: 20%;
 	width:60%;
 
-	
+
 }
 #cupos{
 	margin-top: 15px;
@@ -253,7 +253,7 @@ table tr{
 	height: 20%;
 	width:60%;
 
-	
+
 }
 #botton{
 	margin-top: 15px;
@@ -261,11 +261,11 @@ table tr{
 	height: 20%;
 	width:60%;
 
-	
+
 }
 #botton input{
  margin-top: 20px;
-	
+
 }
 .verde{
 
@@ -276,12 +276,12 @@ table tr{
 	float:left;
 	height: 100%;
 	width:30%;
-	border-radius:100px; 
-	
+	border-radius:100px;
+
 }
 #foto #img{
 	height: 80px;
 	width:80px;
-	border-radius:100%; 
+	border-radius:100%;
    background: red;
 }
