@@ -8,7 +8,7 @@ if (ISSET($_SESSION["email"])) {
       $stmt->bindParam(':email',$_SESSION['email']);
       $stmt->execute();
       while ($row=$stmt->fetch()) {
-        $img=$row[6];
+       // $img=$row[6];
       }
     }
   else {
@@ -143,7 +143,7 @@ if (ISSET($_SESSION["email"])) {
 	   <input id="user_menu" type="checkbox"></input>
        <header role="navegation">
         <nav class="menu">
-            <ul>   
+            <ul>
 				<li><a  id="">Logo</a></li>
 				<li><a  id="">Documentación</a></li>
 				<li><a  id="">Contactanos</a></li>
@@ -159,8 +159,8 @@ if (ISSET($_SESSION["email"])) {
       <div class="inp" id="menu_user">
 	   <center>
 	    <form>
-		    <center><input  type="button" id="cesion" onclick="window.location.href='php/logout.php';" value="Cerrar Sesion"></center>
-        <center><input  type="button" id="perfil" onclick="fade()" value="Foto de perfil"></center>
+		    <center class="hnm"><input  type="button" id="cesion" onclick="window.location.href='php/logout.php';" value="Cerrar Sesion"></center>
+        <center class="hnm"><input  type="button" id="perfil" onclick="fade()" value="Foto de perfil"></center>
 		</form>
 	   </center>
 	  </div>

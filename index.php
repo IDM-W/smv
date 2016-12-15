@@ -1,9 +1,21 @@
 <?php
-session_start();
-  if (ISSET($_SESSION["email"])) {
-    header('location:inicio.php');
-      }else {
-        }
+  require_once __DIR__.'/php/google/vendor/autoload.php';
+  require_once __DIR__.'/php/google/bin/clases/google_auth.php';
+  require_once __DIR__.'/php/google/bin/init.php';
+  session_start();
+
+  $googleClient = new Google_Client();
+  $auth = new GoogleAuth($googleClient);
+
+  if($auth->checkRedirectCode()){
+      //die($_GET['code']);
+      header('Location:index.php');
+  }
+
+    if (ISSET($_SESSION["email"])) {
+      //header('location:inicio.php');
+    }else {
+    }
 ?>
 
 <!DOCTYPE html>
@@ -12,18 +24,18 @@ session_start();
 
 	<title>Se armo el viaje</title>
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+          <meta name="google-signin-client_id" content="297437318621-udqum5rmkic7sjod0nouoq601lbqcj7v.apps.googleusercontent.com">
 	<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&oe=ISO-8859-1;&amp;key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78"
 type="text/javascript"></script>-->
-	<link rel="stylesheet" type="text/css" href="font_icon/style.css" >
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script type="text/javascript" src=js/js.js></script>
 
-	<script type="text/javascript" src="js/jquery-2.2.3.min.js">    </script>
-  <script type="text/javascript" src="js/ajax.js">
-  </script>
-    <script type="text/javascript" src="js/maps/map.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&sensor=false&libraries=places"></script>
     <script type="text/javascript">
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail());
+    }
     function init1() {
         var input = document.getElementById('lds');
         var options = {
@@ -68,10 +80,21 @@ type="text/javascript"></script>-->
 		 <input type="password" placeholder="Contraseña" id="p" name="p"></input>
 		 <a href="#" class="fs" onclick="login()"><div  class="icon-user " id="loguearme"><span>Entrar<span></div></a>
 		<!-- -->
-
-            <a href="#"><div class="twitter_loging">Con Facebook</div></a>
+      <a href="#"><div class="twitter_loging">Con Facebook</div></a>
 		  <a href="#"><div class="twitter_loging">con twitter</div></a>
-		  <a href="#"><div class="google_loging">Con goolge</div></a>
+      <!--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
+      <?php if(!$auth->isLoggedIn()):?>
+		    <a href="<?php echo $auth->getAuthUrl(); ?>"><div class="google_loging">Con goolge</div></a>
+      <?php else: ?>
+        <a href=""><div class="google_loging">inicio</div></a>
+      <?php endif; ?>
+      <?php
+      if($_SESSION['bil']==""){
+        echo'<script type="text/javascript">console.log("vacio")</script>';
+      }
+        echo'<script type="text/javascript">console.log("'.$_SESSION['bil'].'")</script>';
+       ?>
+
 		</form>
 	   </center>
 	  </div>
@@ -102,5 +125,14 @@ type="text/javascript"></script>-->
 	  <footer class="pie_pag">
             <center><a>Copyright © 2016-2016</a></center>
 	  </footer>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  	<link rel="stylesheet" type="text/css" href="font_icon/style.css" >
+  	<link rel="stylesheet" type="text/css" href="style.css">
+  	<script type="text/javascript" src=js/js.js></script>
+  	<script type="text/javascript" src="js/jquery-2.2.3.min.js">    </script>
+    <script type="text/javascript" src="js/ajax.js">
+    </script>
+    <!-- <script type="text/javascript" src="js/maps/map.js"></script>-->
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&libraries=places"></script>    
    </body>
 </html>

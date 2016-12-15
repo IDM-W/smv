@@ -54,14 +54,26 @@ ul li:focus{
 	padding-left:0px;
 	padding-right:0px;
 }
+#fope{
+	position:relative;
+	border: solid 2px green;
+	line-height:0px;
+	padding:3px;
+	width:25px;
+	height:25px;
+	top:5px;
+	border-radius:30px;
+	box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
 #login{
 	position:relative;
 	border: solid 0px;
 	line-height:0px;
-	padding:0  px;
-	background:green;
+	padding:8px;
+    background:rgba(204,207,196,0.4);
 	height:65px;
 	top:5px;
+	color:rgba(49,49,40,0.8);
 	border-radius:30px;
 	box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 }
@@ -141,6 +153,18 @@ input[type=checkbox]{
 .inp input[type=text]:focus{
 
   border-bottom: solid 1px #0178CB;
+}
+.abcRioButton,.abcRioButtonLightBlue{
+	position:absolute;
+	margin-top:10px;
+	top:8px;
+	padding-right:15px;
+	padding-left:15px;
+	width:160px;
+	background:red;
+}
+.abcRioButtonContentWrapper{
+	background:red;
 }
 .inp .facebook_loging, .twitter_loging, .google_loging{
 	font-size:16px;
@@ -293,10 +317,10 @@ ul li:hover{
 
 }
 .hnm{
-	height: inherit;
+	height:initial;
 }
 .wnm{
-	width:inherit;
+	width:initial;
 }
 #inimap{
 	background: rgba(51,51,51,0.1);
@@ -347,9 +371,4 @@ ul li:hover{
 #op a{
 height: 50%;
 width: 100%;
-}
-#User img{
-   top: 10px;
-   height: 25px;
-   width: 25px;
 }
