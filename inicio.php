@@ -18,7 +18,8 @@ if (ISSET($_SESSION["email"])) {
       }
     }
   else {
-      header('location:http://localhost/AJAX/Dropbox/Proyecto_Empresarial/Proyectos_web/smv/smv');
+      //header('location:http://localhost/AJAX/Dropbox/Proyecto_Empresarial/Proyectos_web/smv/smv');
+      header('location:http://localhost/smv');
       }
  ?>
 
@@ -164,18 +165,14 @@ if (ISSET($_SESSION["email"])) {
       </header>
       <div class="inp" id="menu_user">
 	   <center>
+	    <form id="se">
 
-<<<<<<< HEAD
+
+
 	    <form id="se">
 		    <center class="hnm"><input  type="button" id="cesion" onclick="window.location.href='php/logout.php';" value="Cerrar Sesion"></center>
         <center class="hnm"><input  type="button" id="perfil" onclick="fade()" value="Foto de perfil"></center>
 
-=======
-
-	    <form id="se">
-		    <center class="hnm"><input  type="button" id="cesion" onclick="window.location.href='php/logout.php';" value="Cerrar Sesion"></center>
-        <center class="hnm"><input  type="button" id="perfil" onclick="fade()" value="Foto de perfil"></center>
->>>>>>> 277336c34905791c54ebcd4676b5b6b7830f082f
 		</form>
 	   </center>
 	  </div>

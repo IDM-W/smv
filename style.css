@@ -372,8 +372,7 @@ ul li:hover{
 height: 50%;
 width: 100%;
 }
-<<<<<<< HEAD
-=======
+
 #User img{
    top: 10px;
    height: 25px;
@@ -422,4 +421,6 @@ cursor: pointer;
 border-radius: 5px;
 background: #13afaf;
 }
->>>>>>> 4462b9f0b9a81ac9c4c9c1d072304dab84123c8c
+#fb-root,.fb_reset{
+  display: none;
+}

@@ -35,13 +35,15 @@ private  $pas;
 
        $count=$stmt->rowCount();
     if ($count>0){
+         $data=$stmt->fecthAll();
          session_start();
-         $_SESSION['email']=$r[0];
+         $_SESSION['email']=$data[0][1];
+         $_SESSION['id']=$r[0];
          $_SESSION['nombre']=$r[1];
          $_SESSION['img']=$r[3];
          echo 1;
     }else{
-    
+
          echo 0;
     }
     }

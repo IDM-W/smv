@@ -32,12 +32,12 @@ private  $pas;
          $query->execute();
          if ($query) {
 
-
+             $_SESSION['id']=$r[0];
              $_SESSION['email']=$r[1];
              $_SESSION['telefono']=$r[2];
              $_SESSION['nombre']=$r[3];
              $_SESSION['img']=$r[5];
-            echo $_SESSION['telefono'];
+            echo 1;
          }else {
            echo 0;
          }

@@ -9,7 +9,7 @@
 
   if($auth->checkRedirectCode()){
       //die($_GET['code']);
-      header('Location:index.php');
+      header('Location:htt://localhost/smv/index.php');
   }
 
     if (ISSET($_SESSION["email"])) {

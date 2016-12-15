@@ -1,14 +1,12 @@
 <?php
-  /**
-   *
-   */
+
   class GoogleAuth{
         protected $client;
     function __construct(Google_Client $googleClient=null){
         $this->client=$googleClient;
         if ($this->client){
-              $this->client->setClientId('781484041395-ro4n6a0so9sp3d2704641sfdu9b8msbr.apps.googleusercontent.com');
-              $this->client->setClientSecret('NXWNsjbe-T9s7ntt9dx3DDCf');
+              $this->client->setClientId('781484041395-tgtdta472f8e59nn323mn88m74gq3k15.apps.googleusercontent.com');
+              $this->client->setClientSecret('1zUChqXVSkVMTNA7PHButhNK');
               $this->client->setRedirectUri('http://localhost/smv/index.php');
               $this->client->setScopes('email');
         }
@@ -24,8 +22,8 @@
         $this->client->authenticate($_GET['code']);
         $this->setToken($this->client->getAccessToken());
         session_start();
-        $payload= $this->pres();
-        $_SESSION["bil"]=$payload;
+        //$payload= $this->getPayload();
+        //$_SESSION["bil"]=$payload;
 
         return true;
       }
