@@ -5,8 +5,6 @@ require_once("../conexion.php");
 $u=$_POST;
 $clase=new login_f();
  $r2=$clase->entrar_f($u);
-
-
 class login_f
 {
 private  $user;
@@ -39,7 +37,7 @@ private  $pas;
              $_SESSION['telefono']=$r[2];
              $_SESSION['nombre']=$r[3];
              $_SESSION['img']=$r[5];
-            echo 1;
+            echo $_SESSION['telefono'];
          }else {
            echo 0;
          }

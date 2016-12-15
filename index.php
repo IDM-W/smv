@@ -2,7 +2,7 @@
   require_once __DIR__.'/php/google/vendor/autoload.php';
   require_once __DIR__.'/php/google/bin/clases/google_auth.php';
   require_once __DIR__.'/php/google/bin/init.php';
-  session_start();
+
 
   $googleClient = new Google_Client();
   $auth = new GoogleAuth($googleClient);
@@ -37,7 +37,7 @@
    </head>
    <body onload="mostrarv()" >
 
-	    <input id="loger" type="checkbox"></input>
+	    <!--<input id="loger" type="chec>>>>>>> 4462b9f0b9a81ac9c4c9c1d072304dab84123c8ckbox"></input>-->
 		<input id="regis" type="checkbox"></input>
        <header role="navegation">
         <nav class="menu">
@@ -69,10 +69,10 @@
         <a href=""><div class="google_loging">inicio</div></a>
       <?php endif; ?>
       <?php
-      if($_SESSION['bil']==""){
-        echo'<script type="text/javascript">console.log("vacio")</script>';
-      }
+      if(isset($_SESSION['bil'])){
         echo'<script type="text/javascript">console.log("'.$_SESSION['bil'].'")</script>';
+      }
+
        ?>
 
 		</form>

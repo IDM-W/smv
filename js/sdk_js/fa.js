@@ -36,6 +36,8 @@ function agr() {
              },
         success: function(datos)
         {
+          window.alert( datos );
+
           if (datos==1) {
             location.href="inicio.php"
           }
