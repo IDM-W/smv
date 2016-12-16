@@ -38,7 +38,7 @@ header("Content-type: text/plain;charset=utf-8");
         $query->bindParam(':precio',$res[5]);
         $query->bindParam(':marca',$res[6]);
         $query->bindParam(':modelo',$res[7]);
-        $query->bindParam(':id_cr',$_SESSION['email']);
+        $query->bindParam(':id_cr',$_SESSION['id']);
         $query->execute();
         if (!$query) {
           echo 12;

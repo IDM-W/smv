@@ -38,6 +38,7 @@ private  $pas;
        $count=$stmt->rowCount();
     if ($count==1){
       @session_start();
+      $_SESSION['id']=$consul[0]['email'];
        $_SESSION['nombre']=$consul[0]['nombre'];
        $_SESSION['telefono']=$consul[0]['telefono'];
        $_SESSION['email']=$consul[0]['email'];

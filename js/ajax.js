@@ -18,9 +18,9 @@ function publicar() {
 
 },
            success:function(datos){
-             alert(datos);
+
              if (datos==0) {
-               alert(datos);
+               alert("no se inserto");
              }else {
 
 
