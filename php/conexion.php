@@ -23,10 +23,10 @@ private $conm;
            $user = 'root';
            $pas = 'n00lv1d4r-m3';
            $op = array(
-               PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8 COLLATE 'utf8mb4_unicode_ci'",
+               PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
            );
 
-           $this->conm = parent::__construct($host, $user, $pas);
+           $this->conm = parent::__construct($host, $user, $pas, $op);
 	    } catch(PDOException $e) {
 
 	        echo  $e->getMessage();

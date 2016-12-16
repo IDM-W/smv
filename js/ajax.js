@@ -18,8 +18,9 @@ function publicar() {
 
 },
            success:function(datos){
+             alert(datos);
              if (datos==0) {
-               alert("no se puedo insertar");
+               alert(datos);
              }else {
 
 

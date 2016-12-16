@@ -22,10 +22,11 @@ $r=$clase->pvi($p);
 
    {
 header("Content-type: text/plain;charset=utf-8");
+
     $sa=new saneo($p);
      $res=$sa->s();
-     $query = $this->con->prepare('INSERT INTO pv (email,nombre,telefono,lugar_s,lugar_l,fecha,hora,cupos,precio,marca,modelo) values (:email,:nombre,:telefono,:lugar_s,:lugar_ll,:fecha,:hora,:cupos,:precio,:marca,:modelo)');
-
+     $query = $this->con->prepare('INSERT INTO pv (email, id_cr, nombre, telefono, lugar_s, lugar_l, fecha, hora, cupos, precio, marca, modelo) values (:email,:id_cr,:nombre,:telefono,:lugar_s,:lugar_ll,:fecha,:hora,:cupos,:precio,:marca,:modelo)');
+        $dato="si";
         $query->bindParam(':email',$_SESSION['email']);
         $query->bindParam(':nombre',$_SESSION['nombre']);
         $query->bindParam(':telefono',$_SESSION['telefono']);
@@ -37,6 +38,7 @@ header("Content-type: text/plain;charset=utf-8");
         $query->bindParam(':precio',$res[5]);
         $query->bindParam(':marca',$res[6]);
         $query->bindParam(':modelo',$res[7]);
+        $query->bindParam(':id_cr',$_SESSION['email']);
         $query->execute();
         if (!$query) {
           echo 12;
@@ -55,6 +57,7 @@ header("Content-type: text/plain;charset=utf-8");
                 <td>'.$res[5].'</td>
                 <td>'.$res[6].'</td>
                 <td>'.$res[7].'</td>
+                <td>'.$dato.'</td>
               </tr>
             </table>';
            }else {

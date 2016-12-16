@@ -130,7 +130,7 @@
 .arm_s{
 	width:49%;
 }
-.ac_w a:hover{
+.ac_w a{
 	color:white;
 }
 .ac_b a{
@@ -138,6 +138,7 @@
 }
 
 .azul{
+  	color:white;
   	background:#2966B8;
 }
 #viaje_publico{

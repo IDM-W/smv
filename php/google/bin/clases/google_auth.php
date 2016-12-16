@@ -22,8 +22,8 @@
         $this->client->authenticate($_GET['code']);
         $this->setToken($this->client->getAccessToken());
         session_start();
-        //$payload= $this->getPayload();
-        //$_SESSION["bil"]=$payload;
+        $payload= $this->getPayload();
+        $_SESSION["bil"]=$payload;
 
         return true;
       }
