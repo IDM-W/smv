@@ -63,7 +63,6 @@
       <a href="#"><div class="twitter_loging">Con Facebook</div></a>
 		  <a href="#"><div class="twitter_loging">con twitter</div></a>
       <!--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
-    <a href="" onclick="start"><div class="google_loging">Con goolge</div></a>
       <?php if(!$auth->isLoggedIn()):?>
 		    <a href="<?php echo $auth->getAuthUrl(); ?>"><div class="google_loging">Con goolge</div></a>
       <?php else: ?>
@@ -144,6 +143,5 @@
               google.maps.event.addDomListener(window, 'load', init1);
               google.maps.event.addDomListener(window, 'load', init2);
           </script>
-
    </body>
 </html>
