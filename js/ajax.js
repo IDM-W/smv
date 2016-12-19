@@ -143,7 +143,10 @@ function buscar() {
      });
 }
 function embarcar(id){
-	var dato={"id":id.id};
+  var op_pc=  document.getElementById("p_cupos").selectedIndex;
+
+  var dato={"id":id.id,"cupos":document.getElementsByTagName("option")[op_pc].value};
+  //alert(document.getElementsByTagName("option")[op_pc].value);
 
 $.ajax({
            type:'POST',
@@ -167,7 +170,7 @@ function subirme(id){
 
 	var dato={"id":id.id};
 
-$.ajax({
+   $.ajax({
            type:'POST',
            url:"php/subirme.php",
            dataType:'HTML',

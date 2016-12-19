@@ -1,25 +1,33 @@
 <?php
-require 'php/conexion.php';
-$con=new Database();
+  require 'php/conexion.php';
+  $con=new Database();
 session_start();
 $img="";
 if (ISSET($_SESSION["email"])) {
-    if (ISSET($_SESSION['img'])) {
-      $img=$_SESSION['img'];
-    }else{
-      $stmt = $con->prepare("SELECT * FROM usuarios where email=:email" );
-      $stmt->bindParam(':email',$_SESSION['email']);
-      $stmt->execute();
-      while ($row=$stmt->fetch()) {
-        $img=$row[6];
+
+      if (ISSET($_SESSION['img'])) {
+        //$img=$_SESSION['img'];
+        $stm = $con->prepare("SELECT `r_foto` FROM `foto` WHERE id_foto=:idfoto");
+        $stm->bindParam(":idfoto",$_SESSION["id"]);
+        $stm->execute();
+        $data=$stm->fetchAll();
+        $_SESSION['img']=$data[0][0];
+
+      }else{
+        $stmt = $con->prepare("SELECT * FROM usuarios where email=:email" );
+        $stmt->bindParam(':email',$_SESSION['email']);
+        $stmt->execute();
+        while ($row=$stmt->fetch()) {
+          $img=$row[6];
+        }
+
       }
     }
-  }
-else {
-    header('location:http://localhost/AJAX/Dropbox/Proyecto_Empresarial/Proyectos_web/smv/smv');
-    }
+  else {
+      //header('location:http://localhost/AJAX/Dropbox/Proyecto_Empresarial/Proyectos_web/smv/smv');
+      header('location:http://localhost/smv');
+      }
  ?>
-
 <!DOCTYPE html>
 <html>
    <head>
@@ -70,7 +78,7 @@ type="text/javascript"></script>-->
 				<li><a href="buscar.php" id="">Buscar viaje</a></li>
 				<div class="user_my">
 				  <!--<li class="no_select"><label class="icon-user fs"  id="login"><a></a></label></li>-->
-				  <li class="no_select"><label for="user_menu" id="User"><img id="fope" src="<?php echo $img ?>" alt="" /><a style=""><?php echo $_SESSION['nombre'];
+				  <li class="no_select"><label for="user_menu" id="User"><img id="fope" src="<?php echo $_SESSION['img'] ?>" alt="" /><a style=""><?php echo $_SESSION['nombre'];
            ?></a></label></li>
 				</div>
 		    </ul>

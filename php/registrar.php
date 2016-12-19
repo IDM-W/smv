@@ -57,11 +57,11 @@ public function validar()
             echo "mal";
             }else{
           @session_start();
-          $_SESSION['id']=$r[1];
+           $_SESSION['id']=$r[1];
            $_SESSION['nombre']=$r[0];
-            $_SESSION['telefono']=$r[4];
-          $_SESSION['email']=$r[1];
-          header('location:../inicio.php');
+           $_SESSION['telefono']=$r[4];
+           $_SESSION['email']=$r[1];
+           header('location:../inicio.php');
             }
    }
  }

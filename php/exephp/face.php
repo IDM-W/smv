@@ -2,11 +2,12 @@
 session_start();
 require_once("../saneo.php");
 require_once("../conexion.php");
+require_once("exta_foto.php");
 $u=$_POST;
 $clase=new login_f();
- $r2=$clase->entrar_f($u);
-class login_f
-{
+$cle=new ext_img();
+$r2=$clase->entrar_f($u);
+class login_f{
 private  $user;
 private  $pas;
 //conectamos a la bas de datos
@@ -31,12 +32,21 @@ private  $pas;
          $query->bindParam(':nombre',$r[4]);
          $query->execute();
          if ($query) {
-
              $_SESSION['id']=$r[0];
              $_SESSION['email']=$r[1];
              $_SESSION['telefono']=$r[2];
              $_SESSION['nombre']=$r[3];
-             $_SESSION['img']=$r[5];
+            // $ext_img=$clase->ext_insert($r[3],$r[0]);
+             $query = $this->con->prepare('INSERT INTO `foto`(`id_foto`, `r_foto`) VALUES (:id_foto,:r_foto)');
+             $query->bindParam(':id_foto',$r[0]);
+             $query->bindParam(':r_foto',$r[5]);
+             $query->execute();
+             $query = $this->con->prepare("SELECT `r_foto` FROM `foto` WHERE id_foto=:idfoto");
+             $query->bindParam("idfoto",$r[0]);
+             $query->execute();
+             $data=$query->fetchAll();
+             $_SESSION['img']=$data[0][0];
+             //$_SESSION['img']= ext_img:: ext_insert($r[5],$r[0]);
             echo 1;
          }else {
            echo 0;

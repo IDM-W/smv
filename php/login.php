@@ -38,10 +38,15 @@ private  $pas;
        $count=$stmt->rowCount();
     if ($count==1){
       @session_start();
-      $_SESSION['id']=$consul[0]['email'];
+       $_SESSION['id']=$consul[0]['email'];
        $_SESSION['nombre']=$consul[0]['nombre'];
        $_SESSION['telefono']=$consul[0]['telefono'];
        $_SESSION['email']=$consul[0]['email'];
+       $stm = $this->con->prepare("SELECT `r_foto` FROM `foto` WHERE id_foto=:idfoto");
+       $stm->bindParam(":idfoto",$consul[0]['email']);
+       $stm->execute();
+       $data=$stm->fetchAll();
+       $_SESSION['img']=$data[0][0];
       header('Location: ../inicio.php');
 
     }else{
