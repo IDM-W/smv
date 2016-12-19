@@ -144,7 +144,7 @@ function fade() {
     $("#opaco").fadeIn("slow");
     $('#opaco').height($(window).height());
 }
-function gufo() {
+function gufoss() {
   var archivos = document.getElementById("foto");
   var archivo = archivos.files[0];
 		var data = new FormData();
@@ -157,19 +157,63 @@ function gufo() {
                data: data,
                contentType: false,
                processData: false,
-               success: function(datos)
-               {
-
-
+               success: function(datos){
+                 alert(datos);
                    if (datos==0) {
-                     window.alert( "el archivo no es una imagen" );
+                     window.alert(datos+ "el archivo no es una imagen" );
                    }else{
 
-
-                     $("#fope").attr("src",datos);
+                      $("#lls").val(datos);
+                     //$("#fope").attr("src",datos);
                      $("#op").fadeOut();
                      $("#opaco").fadeOut();
                    }
                }
            });
+}
+function gufo(event) {
+    if (!(window.File)) {
+        console.log('La API File no está soportada para este navegador');
+        return;
+    }
+
+    var file;
+    var reader;
+    var files = document.getElementById('foto').files;
+     switch(files[0]["type"]){
+       case "image/gif":
+       case "image/jpeg":
+       case "image/png":
+       case "image/jpg":
+         file = files[0];
+         reader = new FileReader();
+         reader.onloadend = onFileLoaded;
+         reader.readAsDataURL(file);
+       break;
+       default:alert("Formato de archivo incorrecto");
+     }
+
+}
+
+function onFileLoaded(event) {
+    var dataurl= event.currentTarget.result.substr(0);
+    var dato={"foto":dataurl}
+    var ruta = "php/foto.php";
+    $.ajax({
+        url: ruta,
+        type: "POST",
+        data: dato,
+        success: function(datos){
+          //alert(datos);
+            if (datos==0) {
+              window.alert("el archivo no es una imagen" );
+            }else{
+
+              //$("#lls").val(datos);
+              $("#fope").attr("src",datos);
+              $("#op").fadeOut();
+              $("#opaco").fadeOut();
+            }
+        }
+    });
 }

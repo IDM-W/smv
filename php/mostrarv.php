@@ -22,7 +22,6 @@ private $con;
         echo '<div class="co">
           <table>
             <tr>
-
               <td id="s">'.$row[5].'  </td>
               <td><span class="icon-man"></span><label class="icon-car"></label></td>
               <td >  '.$row[6].'</td>

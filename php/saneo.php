@@ -5,9 +5,8 @@
 class  saneo
 {
   private $s;
-  function __construct($a)
-  {
-$this->s=$a;
+  function __construct($a){
+    $this->s=$a;
   }
   public function s()
   {

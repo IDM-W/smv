@@ -14,7 +14,7 @@ var img;
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) return;
           js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/es_LA/sdk.js";
+          js.src = "//connect.facebook.net/es_LA/all.js";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
@@ -30,8 +30,6 @@ var img;
                         alert("No has iniciado sesion co esta app");
 
                  }
-
-
                 });
 
          }
@@ -42,7 +40,7 @@ function los() {
    console.log(response.data.url );
    img= response.data.url;
    localStorage.setItem("img",img);
-   
+
 
 });
 }
@@ -52,7 +50,7 @@ function ll1() {
    FB.api(url, function (response) {
    nombre=response.name;
    idd=response.id;
-   fi=response.first_name;
+   fi=response.first_name + response.last_name;
 
 
    localStorage.setItem("id_fa", idd);
