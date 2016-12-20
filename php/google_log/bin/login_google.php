@@ -53,6 +53,7 @@
             echo '{"error":{"text":'. $e->getMessage() .'}}';
         }
       }
+      
       public function insert_user($data,$sql){
         $saneo=new saneo($data);
         $d=$saneo->s();
