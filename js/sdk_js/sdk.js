@@ -1,12 +1,14 @@
 var img;
  var nombre;
- var id;
+ var idd;
         window.onload=function() {
          FB.init({
            appId      : '1185459628242040',
+           status     : true,
            xfbml      : true,
-           version    : 'v2.8'
+           version    : 'v2.7'
          });
+
 
        };
 
@@ -16,6 +18,8 @@ var img;
           js = d.createElement(s); js.id = id;
           js.src = "//connect.facebook.net/es_LA/sdk.js";
           fjs.parentNode.insertBefore(js, fjs);
+          console.log( "hola"  );
+
         }(document, 'script', 'facebook-jssdk'));
 
 
@@ -30,8 +34,6 @@ var img;
                         alert("No has iniciado sesion co esta app");
 
                  }
-
-
                 });
 
          }
@@ -52,7 +54,11 @@ function ll1() {
    FB.api(url, function (response) {
    nombre=response.name;
    idd=response.id;
+<<<<<<< HEAD
+   fi=response.first_name +" " +response.last_name;
+=======
    fi=response.first_name + response.last_name;
+>>>>>>> ccf8e4415494972406a78ea109e0c2cd88ae7761
 
 
    localStorage.setItem("id_fa", idd);
@@ -66,7 +72,7 @@ function ajax() {
   img=localStorage.getItem("img");
   fi=localStorage.getItem("nombre");
   nc=localStorage.getItem("nombre_com");
-  id=localStorage.getItem("id_fa");
+  idd=localStorage.getItem("id_fa");
 
 
 
@@ -77,7 +83,7 @@ function ajax() {
       url: 'php/exephp/login_f.php',
       type: "POST",
       data: {
-        iden:id,
+        iden:idd,
         fir:fi,
         nombre:nc,
         im:img
