@@ -62,23 +62,7 @@
 		<!-- -->
       <a href="#"><div class="twitter_loging">Con Facebook</div></a>
 		  <a href="#"><div class="twitter_loging">con twitter</div></a>
-<<<<<<< HEAD
-      <!--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
-      <?php if(!$auth->isLoggedIn()):?>
-		    <a href="<?php echo $auth->getAuthUrl(); ?>"><div class="google_loging">Con goolge</div></a>
-      <?php else: ?>
-        <a href=""><div class="google_loging">inicio</div></a>
-      <?php endif; ?>
-      <?php
-      if(isset($_SESSION['bil'])){
-        echo'<script type="text/javascript">console.log("'.$_SESSION['bil'].'")</script>';
-      }
-
-       ?>
-=======
       <a  id="login_google"><div class="google_loging">Con goolge</div></a>
->>>>>>> ccf8e4415494972406a78ea109e0c2cd88ae7761
-
 		</form>
 	   </center>
 	  </div>
@@ -119,7 +103,7 @@
 
     <!-- <script type="text/javascript" src="js/maps/map.js"></script>-->
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&libraries=places"></script>
-<<<<<<< HEAD
+
 
           <script type="text/javascript">
           function onSignIn(googleUser) {
@@ -148,11 +132,11 @@
               google.maps.event.addDomListener(window, 'load', init1);
               google.maps.event.addDomListener(window, 'load', init2);
           </script>
-=======
+
       <script src="https://apis.google.com/js/api:client.js"></script>
       <script type="text/javascript" src="js/enviar.js"></script>
       <script type="text/javascript" src="js/google_login/login_g.js"></script>
 
->>>>>>> ccf8e4415494972406a78ea109e0c2cd88ae7761
+
    </body>
 </html>
