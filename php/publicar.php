@@ -25,7 +25,7 @@ header("Content-type: text/plain;charset=utf-8");
 
     $sa=new saneo($p);
      $res=$sa->s();
-     $query = $this->con->prepare('INSERT INTO pv (email, id_cr, nombre, telefono, lugar_s, lugar_l, fecha, hora, cupos, precio, marca, modelo) values (:email,:id_cr,:nombre,:telefono,:lugar_s,:lugar_ll,:fecha,:hora,:cupos,:precio,:marca,:modelo)');
+     $query = $this->con->prepare('INSERT INTO pv (`id_cr`, `email`, `nombre`, `telefono`, `lugar_s`, `lugar_l`, `fecha`, `hora`, `cupos`, `precio`, `marca`, `modelo`) values (:id_cr,:email,:nombre,:telefono,:lugar_s,:lugar_ll,:fecha,:hora,:cupos,:precio,:marca,:modelo)');
         $dato="si";
         $query->bindParam(':email',$_SESSION['email']);
         $query->bindParam(':nombre',$_SESSION['nombre']);
@@ -57,9 +57,10 @@ header("Content-type: text/plain;charset=utf-8");
                 <td>'.$res[5].'</td>
                 <td>'.$res[6].'</td>
                 <td>'.$res[7].'</td>
-                <td>'.$dato.'</td>
+
               </tr>
             </table>';
+          //  <td>'.$dato.'</td>
            }else {
              echo 0;
            }
