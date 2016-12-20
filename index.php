@@ -62,6 +62,7 @@
 		<!-- -->
       <a href="#"><div class="twitter_loging">Con Facebook</div></a>
 		  <a href="#"><div class="twitter_loging">con twitter</div></a>
+<<<<<<< HEAD
       <!--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
       <?php if(!$auth->isLoggedIn()):?>
 		    <a href="<?php echo $auth->getAuthUrl(); ?>"><div class="google_loging">Con goolge</div></a>
@@ -75,6 +76,9 @@
 
        ?>
 
+=======
+      <a  id="login_google"><div class="google_loging">Con goolge</div></a>
+>>>>>>> befcc44e643ec1bb490443f72ec1d1eda817160d
 		</form>
 	   </center>
 	  </div>
@@ -115,6 +119,10 @@
 
     <!-- <script type="text/javascript" src="js/maps/map.js"></script>-->
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&libraries=places"></script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> befcc44e643ec1bb490443f72ec1d1eda817160d
 
           <script type="text/javascript">
           function onSignIn(googleUser) {
@@ -143,5 +151,14 @@
               google.maps.event.addDomListener(window, 'load', init1);
               google.maps.event.addDomListener(window, 'load', init2);
           </script>
+<<<<<<< HEAD
+=======
+
+      <script src="https://apis.google.com/js/api:client.js"></script>
+      <script type="text/javascript" src="js/enviar.js"></script>
+      <script type="text/javascript" src="js/google_login/login_g.js"></script>
+
+
+>>>>>>> befcc44e643ec1bb490443f72ec1d1eda817160d
    </body>
 </html>

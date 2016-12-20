@@ -1,13 +1,20 @@
 <?php
 session_start();
-require_once 'conexion.php';
-$con=new Database();
-/*require_once("ext_foto/exta_foto.php");
-
-$img_r=new ext_img();
-echo $img_r->ext_insert($_POST["foto"],$_SESSION["id"]);
-*/
-$stmt = $con->prepare("UPDATE `foto` SET r_foto=:r_foto  WHERE id_foto=:id_foto");
+require_once("saneo.php");
+require_once("conexion.php");
+require_once("exephp/exta_foto.php");
+$datos=array($_POST["foto"],$_SESSION["id"]);
+$img_r=new crudimg($datos);
+if($img_r->exit_img()){
+    $img_r->ext_update();
+    echo $img_r->extraer();
+}elseif($img_r->insert_img()){
+    echo $img_r->extraer();
+}else{
+    echo false;
+}
+//print_r ($datos);
+/*$stmt = $con->prepare("UPDATE `foto` SET r_foto=:r_foto  WHERE id_foto=:id_foto");
 $stmt->bindParam(":r_foto",$_POST["foto"]);
 $stmt->bindParam(":id_foto",$_SESSION["id"]);
 $stmt->execute();
@@ -17,9 +24,8 @@ $stm->bindParam(":idfoto",$_SESSION["id"]);
 $stm->execute();
 $data=$stm->fetchAll();
 $_SESSION['img']=$data[0][0];
-echo $data[0][0];
-function FunctionName($value='')
-{
+echo $data[0][0];*/
+function FunctionName($value=''){
   # code...
 }
 
