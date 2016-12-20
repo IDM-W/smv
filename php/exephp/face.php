@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require_once("../saneo.php");
 require_once("../conexion.php");
 require_once("exta_foto.php");

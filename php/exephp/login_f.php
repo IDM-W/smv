@@ -1,4 +1,5 @@
 <?php
+
 require_once("../saneo.php");
 require_once("../conexion.php");
 //require_once("exta_foto.php");
@@ -56,7 +57,11 @@ private  $pas;
          $_SESSION['email']=$data[0][1];
          $_SESSION['id']=$r[0];
          $_SESSION['nombre']=$r[1];
+<<<<<<< HEAD
          //$_SESSION['img']=$r[3];
+=======
+         $_SESSION['telefono']=$data[0][2];
+>>>>>>> ccf8e4415494972406a78ea109e0c2cd88ae7761
          $stmt = $this->con->prepare("UPDATE `foto` SET `r_foto`=:r_foto  WHERE id_foto=:id_foto");
          $stmt->bindParam("r_foto",$r[3]);
          $stmt->bindParam("id_foto",$r[0]);
