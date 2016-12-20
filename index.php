@@ -1,5 +1,5 @@
 <?php
-  /*require_once __DIR__.'/php/google/vendor/autoload.php';
+  require_once __DIR__.'/php/google/vendor/autoload.php';
   require_once __DIR__.'/php/google/bin/clases/google_auth.php';
   require_once __DIR__.'/php/google/bin/init.php';
 
@@ -10,10 +10,10 @@
   if($auth->checkRedirectCode()){
       //die($_GET['code']);
       header('Location:htt://localhost/smv/index.php');
-  }*/
-    session_start();
+  }
+
     if (ISSET($_SESSION["email"])) {
-      header('Location:http://localhost/smv/inicio.php');
+      //header('location:inicio.php');
     }else {
     }
 ?>
@@ -24,11 +24,11 @@
 
 	<title>Se armo el viaje</title>
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
+          <meta name="google-signin-client_id" content="297437318621-udqum5rmkic7sjod0nouoq601lbqcj7v.apps.googleusercontent.com">
+          <script src="https://apis.google.com/js/platform.js" async defer></script>
 
           <!--<script type="text/javascript" src="js/maps/map.js"></script>-->
           <script type="text/javascript" src="js/sdk_js/sdk.js"></script>
-
         	<link rel="stylesheet" type="text/css" href="font_icon/style.css" >
         	<link rel="stylesheet" type="text/css" href="style.css">
 
@@ -62,7 +62,6 @@
 		<!-- -->
       <a href="#"><div class="twitter_loging">Con Facebook</div></a>
 		  <a href="#"><div class="twitter_loging">con twitter</div></a>
-<<<<<<< HEAD
       <!--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
       <?php if(!$auth->isLoggedIn()):?>
 		    <a href="<?php echo $auth->getAuthUrl(); ?>"><div class="google_loging">Con goolge</div></a>
@@ -75,9 +74,6 @@
       }
 
        ?>
-=======
-      <a  id="login_google"><div class="google_loging">Con goolge</div></a>
->>>>>>> ccf8e4415494972406a78ea109e0c2cd88ae7761
 
 		</form>
 	   </center>
@@ -119,7 +115,6 @@
 
     <!-- <script type="text/javascript" src="js/maps/map.js"></script>-->
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&libraries=places"></script>
-<<<<<<< HEAD
 
           <script type="text/javascript">
           function onSignIn(googleUser) {
@@ -148,11 +143,5 @@
               google.maps.event.addDomListener(window, 'load', init1);
               google.maps.event.addDomListener(window, 'load', init2);
           </script>
-=======
-      <script src="https://apis.google.com/js/api:client.js"></script>
-      <script type="text/javascript" src="js/enviar.js"></script>
-      <script type="text/javascript" src="js/google_login/login_g.js"></script>
-
->>>>>>> ccf8e4415494972406a78ea109e0c2cd88ae7761
    </body>
 </html>
