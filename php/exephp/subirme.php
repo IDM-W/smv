@@ -35,7 +35,9 @@
          if ($row[13]<1)
          for ($i = 1; $i <=($row[8]-$cupos[0][0]); $i++) {
            if($i==1){
+
              $selcup.='<option value="'.($i).'">'.($i).' cupo</option>';
+
            }else{
              $selcup.='<option value="'.($i).'">'.($i).' cupos</option>';
            }

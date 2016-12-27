@@ -60,8 +60,57 @@
 		 <input type="password" placeholder="Contraseña" id="p" name="p"></input>
 		 <a href="#" class="fs" onclick="login()"><div  class="icon-user " id="loguearme"><span>Entrar<span></div></a>
 		<!-- -->
-      <a href="#"><div class="twitter_loging">Con Facebook</div></a>
-		  <a href="#"><div class="twitter_loging">con twitter</div></a>
+      <a href="#" onclick="initfa()"><div class="twitter_loging">Con Facebook</div></a>
+      <?php require_once('php/twitteroauth/OAuth.php');
+require_once('php/twitteroauth/twitteroauth.php');
+define('CONSUMER_KEY', 'TDIa1K09apRML1Px8IrwSGbBU');
+define('CONSUMER_SECRET', 'vKAjm1c1f9nuEIOdsBFab3CTRIussZkgcSGiTGgY6y6DU8MBbJ');
+define('OAUTH_CALLBACK', 'http://localhost/smv');
+
+
+
+if(isset($_GET['logout'])){
+
+	session_unset();
+
+	$redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+  	header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+}
+if(!isset($_SESSION['data']) && !isset($_GET['oauth_token'])) {
+	$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET);
+	$request_token = $connection->getRequestToken(OAUTH_CALLBACK);
+	if($request_token){
+		$token = $request_token['oauth_token'];
+		$_SESSION['request_token'] = $token ;
+		$_SESSION['request_token_secret'] = $request_token['oauth_token_secret'];
+		$login_url = $connection->getAuthorizeURL($token);
+	}
+}
+if(isset($_GET['oauth_token'])){
+	$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $_SESSION['request_token'], $_SESSION['request_token_secret']);
+	$access_token = $connection->getAccessToken($_REQUEST['oauth_verifier']);
+	if($access_token){
+		$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+		$params =array('include_entities'=>'false');
+		$data = $connection->get('account/verify_credentials',$params);
+		if($data){
+			$_SESSION['data']=$data;
+			$redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+  			header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+		}
+	}
+}
+if(isset($login_url) && !isset($_SESSION['data'])){
+	echo "<a id='hh' href='$login_url'><div class='twitter_loging'>Con twitter</div></a>";
+}
+else{
+	$data = $_SESSION['data'];
+	$_SESSION['tn']=$data->name;
+	$_SESSION['tf']=$data->profile_image_url;
+  $_SESSION['tid']=$data->id;
+header('location:info.php');
+
+}  ?>
       <a  id="login_google"><div class="google_loging">Con goolge</div></a>
 		</form>
 	   </center>
@@ -76,9 +125,54 @@
           <input type="password" name="ccon"  id="ccon" value="" placeholder="Confirmar Clave">
           <input type="text" name="telefono" id="telefono" value="" placeholder="Telefono">
           <a href="#"><div id="registrarme" onclick="registro()"><span>Registrarme</span></div>	</a>
-		  <div class="facebook_loging" onclick="initfa();">Con facebook</div>
-		  <div class="twitter_loging">con twitter</div>
-		  <div class="google_loging">Con goolge</div>
+		  <div class="facebook_loging" onclick="initfa();">Con f facebook</div>
+		  <?php require_once('php/twitteroauth/OAuth.php');
+require_once('php/twitteroauth/twitteroauth.php');
+
+
+
+if(isset($_GET['logout'])){
+  session_start();
+	$redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+  	header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+}
+if(!isset($_SESSION['data']) && !isset($_GET['oauth_token'])) {
+	$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET);
+	$request_token = $connection->getRequestToken(OAUTH_CALLBACK);
+	if($request_token){
+		$token = $request_token['oauth_token'];
+		$_SESSION['request_token'] = $token ;
+		$_SESSION['request_token_secret'] = $request_token['oauth_token_secret'];
+		$login_url = $connection->getAuthorizeURL($token);
+	}
+}
+if(isset($_GET['oauth_token'])){
+	$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $_SESSION['request_token'], $_SESSION['request_token_secret']);
+	$access_token = $connection->getAccessToken($_REQUEST['oauth_verifier']);
+	if($access_token){
+		$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+		$params =array('include_entities'=>'false');
+		$data = $connection->get('account/verify_credentials',$params);
+		if($data){
+			$_SESSION['data']=$data;
+			$redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+  			header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+		}
+	}
+}
+if(isset($login_url) && !isset($_SESSION['data'])){
+	echo "<a id='hh' href='$login_url'><div class='twitter_loging'>Con twitter</div></a>";
+}
+else{
+	$data = $_SESSION['data'];
+	$_SESSION['tn']=$data->name;
+	$_SESSION['tf']=$data->profile_image_url;
+  $_SESSION['tid']=$data->id;
+  unset($_SESSION['data']);
+   header('location:info.php');
+
+}  ?>
+      <div class="google_loging">Con goolge</div>
 		</form>
 	   </center>
 	  </div>

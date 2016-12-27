@@ -48,6 +48,7 @@ private  $pas;
              $_SESSION['email']=$r[1];
              $_SESSION['telefono']=$r[2];
              $_SESSION['nombre']=$r[3];
+             $_SESSION['facebook']="face";
              //$_SESSION['img']= ext_img:: ext_insert($r[5],$r[0]);
             echo 1;
          }else {

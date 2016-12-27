@@ -1,9 +1,15 @@
 <?php
   session_start();
+  $script="";
   $disable="";
   if(isset($_SESSION["presesion"])){
     $disable='style="display:none;"';
     $script="<script> document.getElementById('en').setAttribute('onclick','inset_tel()')</script>";
+  }elseif (ISSET($_SESSION['facebook'])) {
+
+  }else{
+    $script="<script> document.getElementById('en').setAttribute('onclick','inse_ti()')</script>";
+
   }
 
   if (ISSET($_SESSION["email"])) {
@@ -37,7 +43,11 @@
      <input  <?php echo $disable; ?> type="text" placeholder="Correo" id="email">
      <input type="text" placeholder="Telefono" id="tele">
     <input type="button"id="en" value="Enviar" onclick="agr()">
+    <?php print_r( $_SESSION['tn']) ?>
    </div>
-   <?php echo $script ?>
+   <?php
+   if (ISSET($script)) {
+     echo $script;
+   } ?>
   </body>
 </html>
