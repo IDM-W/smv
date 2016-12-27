@@ -54,7 +54,9 @@ function ll1() {
    FB.api(url, function (response) {
    nombre=response.name;
    idd=response.id;
+
    fi=response.first_name +" " +response.last_name;
+
    localStorage.setItem("id_fa", idd);
    localStorage.setItem("nombre", fi);
    localStorage.setItem("nombre_com", nombre);
