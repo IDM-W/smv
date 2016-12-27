@@ -5,11 +5,12 @@
     $disable='style="display:none;"';
     $script="<script> document.getElementById('en').setAttribute('onclick','inset_tel()')</script>";
   }
-  session_start();
+
   if (ISSET($_SESSION["email"])) {
     header('Location:http://localhost/smv/inicio.php');
   }else {
-  }  
+  //  header('Location:http://localhost/smv/');
+  }
  ?>
 <!DOCTYPE html>
 <html>

@@ -3,6 +3,7 @@
   $con=new Database();
 session_start();
 $img="";
+        $data="";
 if (ISSET($_SESSION["email"])) {
 
       if (ISSET($_SESSION['img'])) {
@@ -10,15 +11,20 @@ if (ISSET($_SESSION["email"])) {
         $stm = $con->prepare("SELECT `r_foto` FROM `foto` WHERE id_foto=:idfoto");
         $stm->bindParam(":idfoto",$_SESSION["id"]);
         $stm->execute();
-        $data=$stm->fetchAll();
-        $_SESSION['img']=$data[0][0];
+        while ($row=$stm->fetch()) {
+            if($row[0]==""){
+            }else{
+              $_SESSION['img']=$row[0];
+            }
+        }
 
       }else{
-        $stmt = $con->prepare("SELECT * FROM usuarios where email=:email" );
-        $stmt->bindParam(':email',$_SESSION['email']);
+        $name="user_m";
+        $stmt = $con->prepare("SELECT r_imgpre FROM img_prede where name_img=:name_img" );
+        $stmt->bindParam(':name_img',$name);
         $stmt->execute();
         while ($row=$stmt->fetch()) {
-          $img=$row[6];
+          $_SESSION['img']=$row[0];
         }
 
       }

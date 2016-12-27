@@ -158,7 +158,7 @@ function gufoss() {
                contentType: false,
                processData: false,
                success: function(datos){
-                 alert(datos);
+                 //alert(datos);
                    if (datos==0) {
                      window.alert(datos+ "el archivo no es una imagen" );
                    }else{
@@ -204,7 +204,7 @@ function onFileLoaded(event) {
         type: "POST",
         data: dato,
         success: function(datos){
-           alert(datos);
+           //alert(datos);
             if (datos==0) {
               window.alert("el archivo no es una imagen" );
             }else{

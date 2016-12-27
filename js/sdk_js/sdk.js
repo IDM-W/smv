@@ -54,13 +54,7 @@ function ll1() {
    FB.api(url, function (response) {
    nombre=response.name;
    idd=response.id;
-<<<<<<< HEAD
    fi=response.first_name +" " +response.last_name;
-=======
-   fi=response.first_name + response.last_name;
->>>>>>> ccf8e4415494972406a78ea109e0c2cd88ae7761
-
-
    localStorage.setItem("id_fa", idd);
    localStorage.setItem("nombre", fi);
    localStorage.setItem("nombre_com", nombre);

@@ -22,7 +22,7 @@
            $count=$stmt->rowCount();
         if ($count>0){
              $data=$stmt->fetchAll();
-             session_start();
+
              //$_SESSION['img']=$r[3];
              $stmt = $this->con->prepare("UPDATE `foto` SET `r_foto`=:r_foto  WHERE id_foto=:id_foto");
              $stmt->bindParam("r_foto",$d[0]);
@@ -42,7 +42,7 @@
              //header('Location:http://localhost/smv/inicio.php');
              print_r($_SESSION);
         }else{
-             session_start();
+
              $_SESSION["presesion"]=$data;
              //echo $_SESSION["presesion"];
              //header("Location:http://localhost/smv/info.php");
@@ -53,7 +53,7 @@
             echo '{"error":{"text":'. $e->getMessage() .'}}';
         }
       }
-      
+
       public function insert_user($data,$sql){
         $saneo=new saneo($data);
         $d=$saneo->s();
@@ -66,7 +66,6 @@
              //$_SESSION['img']= ext_img::ext_update($r[5],$r[0]);
              echo true;
         }else{
-            session_start();
              $stmt = $this->con->prepare($sql);
              //echo $_SESSION["presesion"];
              //header("Location:http://localhost/smv/info.php");

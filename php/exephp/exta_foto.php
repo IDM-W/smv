@@ -42,9 +42,11 @@ class crudimg{
       $stmt = $this->con->prepare("SELECT `r_foto` FROM `foto` WHERE id_foto=:idfoto");
       $stmt->bindParam("idfoto",$this->d[1]);
       $stmt->execute();
-      $rels=$stmt->fetchAll();
-      $_SESSION['img']=$rels[0][0];
-      return $rels[0][0];
+        while ($row=$stmt->fetch()) {
+           $_SESSION['img']=$row[0];
+        }
+     
+      return  $_SESSION['img'];
       }
       catch(PDOException $e) {
           echo '{"error":{"text":'. $e->getMessage() .'}}';
