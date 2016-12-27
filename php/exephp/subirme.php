@@ -16,6 +16,7 @@
         $query->bindParam(":id", $r[0]);
         $query->execute();
         $count=$query->rowCount();
+
         $cup = $this->con->prepare("SELECT if(sum(mt.p_cupos)>=1,SUM(mt.p_cupos),0) as cupos FROM `mt` WHERE mt.id_pv=:id");
         $cup->bindParam(":id", $r[0]);
         $cup->execute();
@@ -32,7 +33,7 @@
               $query->execute();
               $count=$query->rowCount();
 			   echo   $count .' '.$r[0];*/
-         if ($row[13]<1)
+         
          for ($i = 1; $i <=($row[8]-$cupos[0][0]); $i++) {
            if($i==1){
              $selcup.='<option value="'.($i).'">'.($i).' cupo</option>';
@@ -41,6 +42,7 @@
            }
 
          }
+         //print_r($row);
               echo '<div class="" id="foto">
                	 	<img src="'.$row[12].'" id="img"/><br>
                	 	<label><a>'.$row[2].'</a></label><br>
