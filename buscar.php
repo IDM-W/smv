@@ -50,7 +50,7 @@ type="text/javascript"></script>-->
   <script type="text/javascript" src="js/ajax.js">
   </script>
    <!-- <script type="text/javascript" src="js/maps/map.js"></script>-->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&sensor=false&libraries=places&language=es"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&libraries=places&language=es"></script>
     <script type="text/javascript">
     function init1() {
         var input = document.getElementById('lds');

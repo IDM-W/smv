@@ -143,29 +143,38 @@ function buscar() {
      });
 }
 function embarcar(id){
-  var op_pc=  document.getElementById("p_cupos").selectedIndex;
+  if(document.getElementById("p_cupos").length==0){
+      alert("Cupos cerrado");
+  }else{
+    var op_pc=  document.getElementById("p_cupos").selectedIndex;
+    var dato={"id":id.id,"cupos":document.getElementsByTagName("option")[op_pc].value};
+      //alert(document.getElementsByTagName("option")[op_pc].value);
+    $.ajax({
+               type:'POST',
+               url:"php/embarcar.php",
+               dataType:'HTML',
+               data:dato,
+               beforeSend: function(){
 
-  var dato={"id":id.id,"cupos":document.getElementsByTagName("option")[op_pc].value};
-  //alert(document.getElementsByTagName("option")[op_pc].value);
+              },
+               success:function(datos){
+                 window.alert( datos );
 
-$.ajax({
-           type:'POST',
-           url:"php/embarcar.php",
-           dataType:'HTML',
-           data:dato,
-           beforeSend: function(){
-
-          },
-           success:function(datos){
-             //window.alert(datos);
-             //document.getElementById("v_populares").innerHTML=datos;
-           },
-           error: function ( jqXHR, textStatus, errorThrown ){
-                alert (errorThrown);
-           }
-
-     });
+                 var respuesta=(JSON.parse(datos));
+                 if(respuesta[0]==false){
+                    window.alert(respuesta[1]);
+                 }else if(respuesta[0]=true){
+                   window.alert(respuesta[1]);
+                 }
+                 //document.getElementById("v_populares").innerHTML=datos;
+               },
+               error: function ( jqXHR, textStatus, errorThrown ){
+                    alert (errorThrown);
+               }
+         });
+  }
 }
+
 function subirme(id){
 
 	var dato={"id":id.id};
