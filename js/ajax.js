@@ -158,8 +158,11 @@ function embarcar(id){
 
               },
                success:function(datos){
+<<<<<<< HEAD
                  window.alert( datos );
 
+=======
+>>>>>>> 52aba3b72cb313b0e4b946a7cb2c2a2d446ca0f6
                  var respuesta=(JSON.parse(datos));
                  if(respuesta[0]==false){
                     window.alert(respuesta[1]);
