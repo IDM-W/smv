@@ -158,11 +158,6 @@ function embarcar(id){
 
               },
                success:function(datos){
-<<<<<<< HEAD
-                 window.alert( datos );
-
-=======
->>>>>>> 52aba3b72cb313b0e4b946a7cb2c2a2d446ca0f6
                  var respuesta=(JSON.parse(datos));
                  if(respuesta[0]==false){
                     window.alert(respuesta[1]);
@@ -206,9 +201,27 @@ function subirme(id){
 
      });
 }
+//document.getElementById("enviar").addEventListener("click",enviar);
 
-function validar() {
-   if ($("")) {
+function inse_ti(){
+  e=document.getElementById('email').value;
+  t=document.getElementById('tele').value;
+  if (e.length==0 || t.length==0) {
+    window.alert( "campos vacios, todos son obligatorios" );
 
-   }
+  }else{
+   var email = "correo="+document.getElementById("email").value;
+    var telefono = "correo="+document.getElementById("tele").value;
+   var xhr = new XMLHttpRequest();
+
+   xhr.open("POST", "php/twiter/login_t.php");
+   xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+   xhr.send(email,telefono);
+
+   xhr.onreadystatechange = function(){
+       if(xhr.readyState == 4 && xhr.status == 200){
+           window.alert( xhr.responseText );
+
+       }
+   }}
 }

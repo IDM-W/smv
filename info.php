@@ -26,8 +26,10 @@
     	<link rel="stylesheet" type="text/css" href="style.css">
       <script type="text/javascript" src="js/sdk_js/fa.js">
       </script>
-      <script type="text/javascript" src="js/enviar.js"></script>
       <script type="text/javascript" src="js/jquery-2.2.3.min.js">    </script>
+      <script type="text/javascript" src="js/ajax.js"></script>
+      <script type="text/javascript" src="js/enviar.js"></script>
+
        <script type="text/javascript" src="js/google_login/tel.js"></script>
   </head>
 
@@ -43,7 +45,6 @@
      <input  <?php echo $disable; ?> type="text" placeholder="Correo" id="email">
      <input type="text" placeholder="Telefono" id="tele">
     <input type="button"id="en" value="Enviar" onclick="agr()">
-    <?php print_r( $_SESSION['tn']) ?>
    </div>
    <?php
    if (ISSET($script)) {

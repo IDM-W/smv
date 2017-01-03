@@ -14,7 +14,7 @@
   }*/
   require_once('php/twitteroauth/OAuth.php');
 require_once('php/twitteroauth/twitteroauth.php');
-
+require_once('php/conexion.php');
 define('CONSUMER_KEY', 'TDIa1K09apRML1Px8IrwSGbBU');
 define('CONSUMER_SECRET', 'vKAjm1c1f9nuEIOdsBFab3CTRIussZkgcSGiTGgY6y6DU8MBbJ');
 define('OAUTH_CALLBACK', 'http://localhost/smv');
@@ -35,7 +35,7 @@ define('OAUTH_CALLBACK', 'http://localhost/smv');
 
           <!--<script type="text/javascript" src="js/maps/map.js"></script>-->
           <script type="text/javascript" src="js/sdk_js/sdk.js"></script>
-
+          <script type="text/javascript" src="js/ajax.js"></script>
         	<link rel="stylesheet" type="text/css" href="font_icon/style.css" >
         	<link rel="stylesheet" type="text/css" href="style.css">
 
@@ -122,9 +122,25 @@ if(isset($login_url) && !isset($_SESSION['data'])){
 	$_SESSION['tn']=$data->name;
 	$_SESSION['tf']=$data->profile_image_url;
   $_SESSION['tid']=$data->id;
-print_r($_SESSION['tid']);
-  //unset($_SESSION['data']);
-  //header('location:info.php');
+
+                $con=new Database();
+
+  $stmt = $con->prepare("SELECT id_twiter FROM twitter WHERE id_twiter=:id" );
+  $stmt->bindParam(":id", $_SESSION['tid']);
+  $stmt->execute();
+
+   $row_cnt = mysqli_num_rows($stmt);
+     if ($row_cnt==0) {
+       unset($_SESSION['data']);
+       header('location:info.php');
+     }else{
+       $c=$stmt->fetchAll();
+       $_SESSION['id']=$c[0][1];
+       header('location:inicio.php');
+     }
+
+
+
 }?>
       <div class="google_loging">Con goolge</div>
 		</form>
@@ -147,7 +163,7 @@ print_r($_SESSION['tid']);
     </div>
     <script type="text/javascript" src=js/js.js></script>
     <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-    <script type="text/javascript" src="js/ajax.js"></script>
+
 
     <!-- <script type="text/javascript" src="js/maps/map.js"></script>-->
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&libraries=places"></script>

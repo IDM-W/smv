@@ -33,11 +33,7 @@
               $query->execute();
               $count=$query->rowCount();
 			   echo   $count .' '.$r[0];*/
-<<<<<<< HEAD
 
-=======
-         
->>>>>>> 52aba3b72cb313b0e4b946a7cb2c2a2d446ca0f6
          for ($i = 1; $i <=($row[8]-$cupos[0][0]); $i++) {
            if($i==1){
              $selcup.='<option value="'.($i).'">'.($i).' cupo</option>';
