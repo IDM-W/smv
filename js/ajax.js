@@ -177,29 +177,7 @@ function subirme(id){
 
 	var dato={"id":id.id};
 
-   $.ajax({
-           type:'POST',
-           url:"php/subirme.php",
-           dataType:'HTML',
-           data:dato,
-           beforeSend: function(){
 
-          },
-           success:function(datos){
-           	if(datos==""){
-           		window.alert("Debe iniciar sesión");
-           	}else{
-           		document.getElementById("v_populares").innerHTML="";
-           		document.getElementById("v_populares").innerHTML=datos;
-           	}
-             // window.alert(datos);
-
-           },
-           error: function ( jqXHR, textStatus, errorThrown ){
-                alert (errorThrown);
-           }
-
-     });
 }
 //document.getElementById("enviar").addEventListener("click",enviar);
 
@@ -210,18 +188,30 @@ function inse_ti(){
     window.alert( "campos vacios, todos son obligatorios" );
 
   }else{
-   var email = "correo="+document.getElementById("email").value;
-    var telefono = "correo="+document.getElementById("tele").value;
-   var xhr = new XMLHttpRequest();
+    $.ajax({
+            type:'POST',
+            url:"php/twiter/login_t.php",
+            dataType:'HTML',
+            data:{
+              email:e,
+              tele:t
+            },
+            beforeSend: function(){
 
-   xhr.open("POST", "php/twiter/login_t.php");
-   xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-   xhr.send(email,telefono);
+           },
+            success:function(datos){
+              window.alert( datos );
 
-   xhr.onreadystatechange = function(){
-       if(xhr.readyState == 4 && xhr.status == 200){
-           window.alert( xhr.responseText );
+              if (datos!=0) {
+                //location.href="inicio.php";
+}
 
-       }
-   }}
+            },
+            error: function ( jqXHR, textStatus, errorThrown ){
+                 alert (errorThrown);
+            }
+
+      });
+  }
+
 }

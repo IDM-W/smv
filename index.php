@@ -122,22 +122,27 @@ if(isset($login_url) && !isset($_SESSION['data'])){
 	$_SESSION['tn']=$data->name;
 	$_SESSION['tf']=$data->profile_image_url;
   $_SESSION['tid']=$data->id;
-
                 $con=new Database();
-
-  $stmt = $con->prepare("SELECT id_twiter FROM twitter WHERE id_twiter=:id" );
-  $stmt->bindParam(":id", $_SESSION['tid']);
+  $stmt = $con->prepare("SELECT * FROM `twiter` WHERE id_twiter=:id" );
+  $stmt->bindParam(':id', $_SESSION['tid']);
   $stmt->execute();
+  if ($stmt) {
+    unset($_SESSION['data']);
+       $row_cnt = $stmt->num_rows;
+       $_SESSION['eed']=$row_cnt;
+         if ($row_cnt>0) {
+           $c=$stmt->fetchAll();
+           $_SESSION['img']=$_SESSION['tf'];
+           $_SESSION['id']=$_SESSION['tid'];
+           $_SESSION['email']=$c[0][1];
+           $_SESSION['telefono']=$c[0][2];
+           $_SESSION['nombre']=$_SESSION['tn'];
+           header('location:inicio.php');
+         }else{
+           header('location:info.php');
+         }
+  }
 
-   $row_cnt = mysqli_num_rows($stmt);
-     if ($row_cnt==0) {
-       unset($_SESSION['data']);
-       header('location:info.php');
-     }else{
-       $c=$stmt->fetchAll();
-       $_SESSION['id']=$c[0][1];
-       header('location:inicio.php');
-     }
 
 
 
@@ -155,7 +160,8 @@ if(isset($login_url) && !isset($_SESSION['data'])){
                </div>
 	       </div>
 	  <footer class="pie_pag">
-            <center><a>Copyright © 2016-2016</a></center>
+            <center><a>Copyright © 2016-2016  <?php echo $_SESSION['eed']."fgdf"; ?></a></center>
+
 	  </footer>
 
     <div id="notificaciones">

@@ -45,6 +45,7 @@
      <input  <?php echo $disable; ?> type="text" placeholder="Correo" id="email">
      <input type="text" placeholder="Telefono" id="tele">
     <input type="button"id="en" value="Enviar" onclick="agr()">
+    <?php echo $_SESSION['tid'] ?>
    </div>
    <?php
    if (ISSET($script)) {
