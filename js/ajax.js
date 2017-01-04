@@ -200,12 +200,9 @@ function inse_ti(){
 
            },
             success:function(datos){
-              window.alert( datos );
-
               if (datos!=0) {
-                //location.href="inicio.php";
+                location.href="inicio.php";
 }
-
             },
             error: function ( jqXHR, textStatus, errorThrown ){
                  alert (errorThrown);

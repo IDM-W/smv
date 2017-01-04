@@ -116,32 +116,37 @@ if(isset($login_url) && !isset($_SESSION['data'])){
           <input type="password" name="ccon"  id="ccon" value="" placeholder="Confirmar Clave">
           <input type="text" name="telefono" id="telefono" value="" placeholder="Telefono">
           <a href="#"><div id="registrarme" onclick="registro()"><span>Registrarme</span></div>	</a>
-		  <div class="facebook_loging" onclick="initfa();">Con f facebook</div><?php
+		  <div class="facebook_loging" onclick="initfa();">Con  facebook</div><?php
       	echo "<a id='hh' href='$login_url'><div class='twitter_loging'>Con twitter</div></a>"; } else{
+
   $data = $_SESSION['data'];
 	$_SESSION['tn']=$data->name;
 	$_SESSION['tf']=$data->profile_image_url;
   $_SESSION['tid']=$data->id;
+
+
                 $con=new Database();
   $stmt = $con->prepare("SELECT * FROM `twiter` WHERE id_twiter=:id" );
   $stmt->bindParam(':id', $_SESSION['tid']);
   $stmt->execute();
+  $selecion =$stmt->fetchAll();
+  $count=count($selecion);
   if ($stmt) {
-    unset($_SESSION['data']);
-       $row_cnt = $stmt->num_rows;
-       $_SESSION['eed']=$row_cnt;
-         if ($row_cnt>0) {
+  unset($_SESSION['data']);
+     echo $count;
+         if ($count>0) {
            $c=$stmt->fetchAll();
            $_SESSION['img']=$_SESSION['tf'];
            $_SESSION['id']=$_SESSION['tid'];
-           $_SESSION['email']=$c[0][1];
-           $_SESSION['telefono']=$c[0][2];
+           $_SESSION['email']=$selecion[0][1];
+           $_SESSION['telefono']=$selecion[0][2];
            $_SESSION['nombre']=$_SESSION['tn'];
            header('location:inicio.php');
+           echo $count;
          }else{
            header('location:info.php');
          }
-  }
+         }
 
 
 
@@ -160,7 +165,7 @@ if(isset($login_url) && !isset($_SESSION['data'])){
                </div>
 	       </div>
 	  <footer class="pie_pag">
-            <center><a>Copyright © 2016-2016  <?php echo $_SESSION['eed']."fgdf"; ?></a></center>
+            <center><a>Copyright © 2016-2016  </a></center>
 
 	  </footer>
 

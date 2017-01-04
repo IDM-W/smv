@@ -35,7 +35,6 @@ class logint
            $_SESSION['email']=$d[0];
            $_SESSION['telefono']=$d[1];
            $_SESSION['nombre']=$_SESSION['tn'];
-           header('location:../../info.php');
            echo 1;
        }
      }
