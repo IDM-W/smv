@@ -1,17 +1,5 @@
 <?php
-  /*require_once __DIR__.'/php/google/vendor/autoload.php';
-  require_once __DIR__.'/php/google/bin/clases/google_auth.php';
-  require_once __DIR__.'/php/google/bin/init.php';
 
-
-
-  $googleClient = new Google_Client();
-  $auth = new GoogleAuth($googleClient);
-
-  if($auth->checkRedirectCode()){
-      //die($_GET['code']);
-      header('Location:htt://localhost/smv/index.php');
-  }*/
   require_once('php/twitteroauth/OAuth.php');
 require_once('php/twitteroauth/twitteroauth.php');
 require_once('php/conexion.php');
@@ -35,7 +23,6 @@ define('OAUTH_CALLBACK', 'http://localhost/smv');
 
           <!--<script type="text/javascript" src="js/maps/map.js"></script>-->
           <script type="text/javascript" src="js/sdk_js/sdk.js"></script>
-          <script type="text/javascript" src="js/ajax.js"></script>
         	<link rel="stylesheet" type="text/css" href="font_icon/style.css" >
         	<link rel="stylesheet" type="text/css" href="style.css">
 
@@ -102,7 +89,7 @@ if(isset($_GET['oauth_token'])){
 if(isset($login_url) && !isset($_SESSION['data'])){
 	echo "<a id='hh' href='$login_url'><div class='twitter_loging'>Con twitter</div></a>";
  ?>
-      <a  id="login_google"><div class="google_loging">Con goolge</div></a>
+      <a  id="login_google"><div class="google_loging">Con google</div></a>
 		</form>
 	   </center>
 	  </div>
@@ -152,7 +139,7 @@ if(isset($login_url) && !isset($_SESSION['data'])){
 
 
 }?>
-      <div class="google_loging">Con goolge</div>
+      <a id=""><div class="google_loging">Con google</div></a>
 		</form>
 	   </center>
 	  </div>
@@ -174,7 +161,7 @@ if(isset($login_url) && !isset($_SESSION['data'])){
     </div>
     <script type="text/javascript" src=js/js.js></script>
     <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-
+    <script type="text/javascript" src="js/ajax.js"></script>
 
     <!-- <script type="text/javascript" src="js/maps/map.js"></script>-->
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDur_r4IxJEKDAmXLY8bMC3wFS7T5i8t78&v=3.exp&libraries=places"></script>

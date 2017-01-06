@@ -1,16 +1,7 @@
 var img;
  var nombre;
  var idd;
-        window.onload=function() {
-         FB.init({
-           appId      : '1185459628242040',
-           status     : true,
-           xfbml      : true,
-           version    : 'v2.7'
-         });
 
-
-       };
 
           (function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
@@ -21,7 +12,16 @@ var img;
           console.log( "hola"  );
 
         }(document, 'script', 'facebook-jssdk'));
+        window.onload=function() {
+         FB.init({
+           appId      : '1185459628242040',
+           status     : true,
+           xfbml      : true,
+           version    : 'v2.7'
+         });
 
+
+       };
 
 
 

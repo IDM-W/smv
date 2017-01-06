@@ -177,7 +177,29 @@ function subirme(id){
 
 	var dato={"id":id.id};
 
+   $.ajax({
+           type:'POST',
+           url:"php/subirme.php",
+           dataType:'HTML',
+           data:dato,
+           beforeSend: function(){
 
+          },
+           success:function(datos){
+           	if(datos==""){
+           		window.alert("Debe iniciar sesión");
+           	}else{
+           		document.getElementById("v_populares").innerHTML="";
+           		document.getElementById("v_populares").innerHTML=datos;
+           	}
+             // window.alert(datos);
+
+           },
+           error: function ( jqXHR, textStatus, errorThrown ){
+                alert (errorThrown);
+           }
+
+     });
 }
 //document.getElementById("enviar").addEventListener("click",enviar);
 
